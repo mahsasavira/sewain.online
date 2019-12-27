@@ -38,7 +38,7 @@
     </div>
 
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-12">
         <h2 class="contact-title">Get in Touch</h2>
       </div>
@@ -69,7 +69,7 @@
           <div class="form-group mt-lg-3">
             <button type="submit" class="main_btn">Send Message</button>
           </div>
-        </form>
+        </form> -->
 
 
       </div>
@@ -78,22 +78,21 @@
         <div class="media contact-info">
           <span class="contact-info__icon"><i class="ti-home"></i></span>
           <div class="media-body">
-            <h3>Buttonwood, California.</h3>
-            <p>Rosemead, CA 91770</p>
+            <h3>Malang, Jawa Timur, Indonesia</h3>
+            <p>Jl. Tidar No 100 Karangbesuki Malang</p>
           </div>
         </div>
         <div class="media contact-info">
           <span class="contact-info__icon"><i class="ti-tablet"></i></span>
           <div class="media-body">
-            <h3><a href="tel:454545654">00 (440) 9865 562</a></h3>
+            <h3><a href="tel:454545654">(0341) 123456</a></h3>
             <p>Mon to Fri 9am to 6pm</p>
           </div>
         </div>
         <div class="media contact-info">
           <span class="contact-info__icon"><i class="ti-email"></i></span>
           <div class="media-body">
-            <h3><a href="mailto:support@colorlib.com">support@colorlib.com</a></h3>
-            <p>Send us your query anytime!</p>
+            <h3><a href="mailto:support@colorlib.com">sewainonline@gmail.com</a></h3>
           </div>
         </div>
       </div>
