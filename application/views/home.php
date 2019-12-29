@@ -4,10 +4,7 @@
     <div class="container">
       <div class="banner_content row">
         <div class="col-lg-12">
-          <p class="sub text-uppercase"><?php echo $title; ?></p>
-          <h3><span>Halo</span> Your <br />Personal <span>Style</span></h3>
-          <h4>Fowl saw dry which a above together place.</h4>
-          <a class="main_btn mt-40" href="#">View Collection</a>
+          <h3><span>Halo</span> I'm Your <br />Personal <span>Assistant</span></h3>
         </div>
       </div>
     </div>
@@ -165,7 +162,7 @@
 <!--================ End Feature Product Area =================-->
 
 <!--================ Offer Area =================-->
-<section class="offer_area">
+<!-- <section class="offer_area">
   <div class="container">
     <div class="row justify-content-center">
       <div class="offset-lg-4 col-lg-6 text-center">
@@ -178,11 +175,11 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!--================ End Offer Area =================-->
 
 <!--================ New Product Area =================-->
-<section class="new_product_area section_gap_top section_gap_bottom_custom">
+<!-- <section class="new_product_area section_gap_top section_gap_bottom_custom">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-12">
@@ -323,7 +320,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!--================ End New Product Area =================-->
 
 <!--================ Inspired Product Area =================-->
@@ -568,7 +565,7 @@
 <!--================ End Inspired Product Area =================-->
 
 <!--================ Start Blog Area =================-->
-<section class="blog-area section-gap">
+<!-- <section class="blog-area section-gap">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-12">
@@ -656,5 +653,5 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!--================ End Blog Area =================-->
