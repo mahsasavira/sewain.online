@@ -15,13 +15,13 @@
             <div class="col-lg-7 pr-0">
               <ul class="nav navbar-nav center_nav pull-right">
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= base_url(); ?>">Home</a>
+                  <a class="nav-link" href="<?= base_url(); ?>">Beranda</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?= base_url('barang'); ?>">Katalog</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= base_url('contact'); ?>">Contact</a>
+                  <a class="nav-link" href="<?= base_url('contact'); ?>">Kontak</a>
                 </li>
               </ul>
             </div>
