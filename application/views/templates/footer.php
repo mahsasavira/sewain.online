@@ -1,5 +1,6 @@
   <!--================ start footer Area  =================-->
   <footer class="footer-area section_gap">
+<<<<<<< HEAD
     <!-- <div class="container">
       <div class="row">
         <div class="col-lg-2 col-md-6 single-footer-widget">
@@ -67,8 +68,17 @@
           <a href="#"><i class="fa fa-dribbble"></i></a>
           <a href="#"><i class="fa fa-behance"></i></a>
         </div> -->
+=======
+      <div class="container">
+          <div class="footer-bottom row text-center">
+              <p class="footer-text m-0 col-md-12">
+                  Copyright &copy;<script>
+                      document.write(new Date().getFullYear());
+                  </script> JC Team
+              </p>
+          </div>
+>>>>>>> master
       </div>
-    </div>
   </footer>
   <!--================ End footer Area  =================-->
 
@@ -88,6 +98,6 @@
   <script src="<?php echo base_url('assets/'); ?>vendors/counter-up/jquery.counterup.js"></script>
   <script src="<?php echo base_url('assets/'); ?>js/mail-script.js"></script>
   <script src="<?php echo base_url('assets/'); ?>js/theme.js"></script>
-</body>
+  </body>
 
-</html>
+  </html>
