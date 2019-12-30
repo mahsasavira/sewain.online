@@ -24,7 +24,7 @@ class Barang extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar', $data);
-        $this->load->view('cart', $data);
+        $this->load->view('barang/index', $data);
         $this->load->view('templates/footer');
     }
 

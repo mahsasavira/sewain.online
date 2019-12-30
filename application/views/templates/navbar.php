@@ -18,7 +18,7 @@
                   <a class="nav-link" href="<?= base_url(); ?>">Beranda</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="<?= base_url('barang'); ?>">Katalog</a>
+                  <a class="nav-link" href="<?= base_url('barang'); ?>">Barang</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="<?= base_url('contact'); ?>">Kontak</a>
@@ -41,7 +41,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <a href="#" class="icons">
+                  <a href="<?= base_url('auth'); ?>" class="icons">
                     <i class="ti-shift-right" aria-hidden="true"></i>
                   </a>
                 </li>
