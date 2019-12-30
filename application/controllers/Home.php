@@ -11,7 +11,7 @@ class Home extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Home';
+        $data['title'] = 'Beranda';
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar', $data);
