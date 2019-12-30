@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #130f40;
+  background: #E5E5E5;
 }
 
 .card-signin {

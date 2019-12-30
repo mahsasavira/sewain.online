@@ -13,14 +13,17 @@ class Auth extends CI_Controller
         $data['title'] = 'Login';
 
         $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar', $data);
         $this->load->view('auth/index', $data);
     }
+    
 
     function daftar()
     {
         $data['title'] = 'Daftar';
 
         $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar', $data);
         $this->load->view('auth/daftar', $data);
     }
 }
