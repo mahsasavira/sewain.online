@@ -1,5 +1,5 @@
 <!-- ================ contact section start ================= -->
-<section class="section_gap">
+<section class="section_gap my-5">
   <div class="container">
     <div class="row">
 
