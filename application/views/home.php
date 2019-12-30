@@ -3,8 +3,8 @@
   <div class="banner_inner d-flex align-items-center">
     <div class="container">
       <div class="banner_content row">
-        <div class="col-lg-12">
-          <h3 style="color: #3a3b3d !important"><small style="color: #898c8f !important">Selamat datang di, </small> <br />Sewain</h3>
+        <div class="col-auto">
+          <h3 class="py-2 px-2" style="color: #e5e5e5 !important; background-color: #71cd14;"><small style="color: #cccccc !important">Selamat datang di, </small> <br />Sewain</h3>
         </div>
       </div>
     </div>

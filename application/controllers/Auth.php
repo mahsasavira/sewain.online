@@ -10,13 +10,13 @@ class Auth extends CI_Controller
 
     function index()
     {
-        $data['title'] = 'Login';
+        $data['title'] = 'Masuk';
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar', $data);
         $this->load->view('auth/index', $data);
     }
-    
+
 
     function daftar()
     {

@@ -28,17 +28,36 @@
 
             <div class="col-lg-5 pr-0">
               <ul class="nav navbar-nav navbar-right right_nav pull-right">
-                <li class="nav-item">
-                  <a href="#" class="icons">
-                    <i class="ti-search" aria-hidden="true"></i>
-                  </a>
-                </li>
+                <?php if ($title != "Masuk" && $title != "Daftar") { ?>
 
-                <li class="nav-item">
-                  <a href="#" class="icons">
-                    <i class="ti-shopping-cart"></i>
-                  </a>
-                </li>
+
+                  <li class="nav-item">
+                    <div class="dropdown show">
+                      <a href="#" class="icons dropdown-toggle" role="button" id="dropdownMenuCari" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="ti-search" aria-hidden="true"></i>
+                      </a>
+
+                      <div class="row">
+
+                        <form class="dropdown-menu p-4 col-md-4" aria-labelledby="dropdownMenuCari">
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="inputCariBarang" placeholder="Cari barang">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Cari</button>
+                        </form>
+
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="<?= base_url('sewaan'); ?>" class="icons">
+                      <i class="ti-shopping-cart"></i>
+                    </a>
+                  </li>
+                <?php } ?>
+
+
 
                 <li class="nav-item">
                   <a href="<?= base_url('auth'); ?>" class="icons">
