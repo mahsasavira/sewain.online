@@ -37,17 +37,18 @@
                         <i class="ti-search" aria-hidden="true"></i>
                       </a>
 
-                      <div class="row">
 
-                        <form class="dropdown-menu p-4 col-md-4" aria-labelledby="dropdownMenuCari">
-                          <div class="form-group">
-                            <input type="text" class="form-control" id="inputCariBarang" placeholder="Cari barang">
-                          </div>
-                          <button type="submit" class="btn btn-primary">Cari</button>
-                        </form>
 
-                      </div>
+                      <form class="dropdown-menu p-2 col-auto form-inline" aria-labelledby="dropdownMenuCari">
+
+                        <input type="text" width="60" class="form-control mb-2" id="inputCariBarang" placeholder="Cari barang">
+
+                        <button type="submit" class="btn btn-sm btn-login">Cari</button>
+                      </form>
+
+
                     </div>
+
                   </li>
 
                   <li class="nav-item">

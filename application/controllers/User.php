@@ -15,13 +15,6 @@ class User extends CI_Controller
     /*
      * Listing of user
      */
-    function index()
-    {
-        $data['user'] = $this->User_model->get_all_user();
-
-        $data['_view'] = 'user/index';
-        $this->load->view('layouts/main', $data);
-    }
 
     function masuk()
     {
