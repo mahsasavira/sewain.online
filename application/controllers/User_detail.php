@@ -35,6 +35,10 @@ class User_detail extends CI_Controller{
 				'KOTA' => $this->input->post('KOTA'),
 				'STATUS' => $this->input->post('STATUS'),
 				'ID_USER' => $this->input->post('ID_USER'),
+				'KTP' => $this->input->post('KTP'),
+				'SIM' => $this->input->post('SIM'),
+				'KK' => $this->input->post('KK'),
+				'KARTU_PELAJAR' => $this->input->post('KARTU_PELAJAR'),
             );
             
             $user_detail_id = $this->User_detail_model->add_user_detail($params);
@@ -65,6 +69,10 @@ class User_detail extends CI_Controller{
 					'KOTA' => $this->input->post('KOTA'),
 					'STATUS' => $this->input->post('STATUS'),
 					'ID_USER' => $this->input->post('ID_USER'),
+					'KTP' => $this->input->post('KTP'),
+					'SIM' => $this->input->post('SIM'),
+					'KK' => $this->input->post('KK'),
+					'KARTU_PELAJAR' => $this->input->post('KARTU_PELAJAR'),
                 );
 
                 $this->User_detail_model->update_user_detail($ID_DETAIL_USER,$params);            

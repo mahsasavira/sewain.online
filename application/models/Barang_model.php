@@ -18,13 +18,26 @@ class Barang_model extends CI_Model
     {
         return $this->db->get_where('BARANG',array('ID_BARANG'=>$ID_BARANG))->row_array();
     }
+    
+    /*
+     * Get all barang count
+     */
+    function get_all_barang_count()
+    {
+        $this->db->from('BARANG');
+        return $this->db->count_all_results();
+    }
         
     /*
      * Get all barang
      */
-    function get_all_barang()
+    function get_all_barang($params = array())
     {
         $this->db->order_by('ID_BARANG', 'desc');
+        if(isset($params) && !empty($params))
+        {
+            $this->db->limit($params['limit'], $params['offset']);
+        }
         return $this->db->get('BARANG')->result_array();
     }
         

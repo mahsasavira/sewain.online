@@ -17,9 +17,16 @@ class Barang extends CI_Controller
      */
     function index()
     {
-        $data['barang'] = $this->Barang_model->get_all_barang();
+        $params['limit'] = RECORDS_PER_PAGE;
+        $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
 
-        $data['_view'] = 'barang/index';
+        $config = $this->config->item('pagination');
+        $config['base_url'] = site_url('barang/index?');
+        $config['total_rows'] = $this->Barang_model->get_all_barang_count();
+        $this->pagination->initialize($config);
+
+        $data['barang'] = $this->Barang_model->get_all_barang($params);
+
         $data['title'] = 'Barang';
 
         $this->load->view('templates/header', $data);
@@ -33,13 +40,23 @@ class Barang extends CI_Controller
      */
     function add()
     {
-        if (isset($_POST) && count($_POST) > 0) {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('NAMABARANG', 'NAMABARANG', 'required');
+        $this->form_validation->set_rules('JENIS', 'JENIS', 'required');
+        $this->form_validation->set_rules('DESKRIPSI', 'DESKRIPSI', 'required');
+        $this->form_validation->set_rules('STATUS', 'STATUS', 'required');
+        $this->form_validation->set_rules('HARGA', 'HARGA', 'required');
+        $this->form_validation->set_rules('GAMBAR', 'GAMBAR', 'required');
+
+        if ($this->form_validation->run()) {
             $params = array(
                 'NAMABARANG' => $this->input->post('NAMABARANG'),
                 'JENIS' => $this->input->post('JENIS'),
                 'DESKRIPSI' => $this->input->post('DESKRIPSI'),
                 'STATUS' => $this->input->post('STATUS'),
                 'HARGA' => $this->input->post('HARGA'),
+                'GAMBAR' => $this->input->post('GAMBAR'),
             );
 
             $barang_id = $this->Barang_model->add_barang($params);
@@ -59,13 +76,23 @@ class Barang extends CI_Controller
         $data['barang'] = $this->Barang_model->get_barang($ID_BARANG);
 
         if (isset($data['barang']['ID_BARANG'])) {
-            if (isset($_POST) && count($_POST) > 0) {
+            $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('NAMABARANG', 'NAMABARANG', 'required');
+            $this->form_validation->set_rules('JENIS', 'JENIS', 'required');
+            $this->form_validation->set_rules('DESKRIPSI', 'DESKRIPSI', 'required');
+            $this->form_validation->set_rules('STATUS', 'STATUS', 'required');
+            $this->form_validation->set_rules('HARGA', 'HARGA', 'required');
+            $this->form_validation->set_rules('GAMBAR', 'GAMBAR', 'required');
+
+            if ($this->form_validation->run()) {
                 $params = array(
                     'NAMABARANG' => $this->input->post('NAMABARANG'),
                     'JENIS' => $this->input->post('JENIS'),
                     'DESKRIPSI' => $this->input->post('DESKRIPSI'),
                     'STATUS' => $this->input->post('STATUS'),
                     'HARGA' => $this->input->post('HARGA'),
+                    'GAMBAR' => $this->input->post('GAMBAR'),
                 );
 
                 $this->Barang_model->update_barang($ID_BARANG, $params);

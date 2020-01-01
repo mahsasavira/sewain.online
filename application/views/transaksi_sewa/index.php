@@ -1,4 +1,8 @@
-<table border="1" width="100%">
+<div class="pull-right">
+	<a href="<?php echo site_url('transaksi_sewa/add'); ?>" class="btn btn-success">Add</a> 
+</div>
+
+<table class="table table-striped table-bordered">
     <tr>
 		<th>ID TRAKSAKSI</th>
 		<th>ID SEWAAN</th>
@@ -17,8 +21,8 @@
 		<td><?php echo $T['LAMA_SEWA']; ?></td>
 		<td><?php echo $T['TOTAL_TARIF']; ?></td>
 		<td>
-            <a href="<?php echo site_url('transaksi_sewa/edit/'.$T['ID_TRAKSAKSI']); ?>">Edit</a> | 
-            <a href="<?php echo site_url('transaksi_sewa/remove/'.$T['ID_TRAKSAKSI']); ?>">Delete</a>
+            <a href="<?php echo site_url('transaksi_sewa/edit/'.$T['ID_TRAKSAKSI']); ?>" class="btn btn-info btn-xs">Edit</a> 
+            <a href="<?php echo site_url('transaksi_sewa/remove/'.$T['ID_TRAKSAKSI']); ?>" class="btn btn-danger btn-xs">Delete</a>
         </td>
     </tr>
 	<?php } ?>
