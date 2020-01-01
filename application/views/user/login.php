@@ -9,7 +9,7 @@
                         <div class="form-label-group">
                             <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
                             <label for="inputUsername">Username</label>
-                        </div>
+                         </div>
                         <div class="form-label-group">
                             <input type="password" id="inputPassword" class="form-control" placeholder="Kata sandi" required>
                             <label for="inputPassword">Kata sandi</label>
