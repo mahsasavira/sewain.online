@@ -1,4 +1,8 @@
-<table border="1" width="100%">
+<div class="pull-right">
+	<a href="<?php echo site_url('pembayaran/add'); ?>" class="btn btn-success">Add</a> 
+</div>
+
+<table class="table table-striped table-bordered">
     <tr>
 		<th>ID PEMBAYARAN</th>
 		<th>ID TRAKSAKSI</th>
@@ -13,8 +17,8 @@
 		<td><?php echo $P['STATUS']; ?></td>
 		<td><?php echo $P['TGL_BAYAR']; ?></td>
 		<td>
-            <a href="<?php echo site_url('pembayaran/edit/'.$P['ID_PEMBAYARAN']); ?>">Edit</a> | 
-            <a href="<?php echo site_url('pembayaran/remove/'.$P['ID_PEMBAYARAN']); ?>">Delete</a>
+            <a href="<?php echo site_url('pembayaran/edit/'.$P['ID_PEMBAYARAN']); ?>" class="btn btn-info btn-xs">Edit</a> 
+            <a href="<?php echo site_url('pembayaran/remove/'.$P['ID_PEMBAYARAN']); ?>" class="btn btn-danger btn-xs">Delete</a>
         </td>
     </tr>
 	<?php } ?>

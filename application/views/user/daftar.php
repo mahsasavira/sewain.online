@@ -28,7 +28,7 @@
             <button class="btn btn-lg btn-login btn-block text-uppercase" type="submit">Daftar</button>
             <hr class="my-2">
             <div class="d-flex justify-content-center">
-              <a href="<?= base_url('auth'); ?>">Masuk</a>
+              <a href="<?= base_url('user/masuk'); ?>">Masuk</a>
             </div>
           </form>
         </div>
