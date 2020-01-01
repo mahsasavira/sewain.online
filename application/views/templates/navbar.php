@@ -60,7 +60,7 @@
 
 
                 <li class="nav-item">
-                  <a href="<?= base_url('auth'); ?>" class="icons">
+                  <a href="<?= base_url('user/masuk'); ?>" class="icons">
                     <i class="ti-shift-right" aria-hidden="true"></i>
                   </a>
                 </li>

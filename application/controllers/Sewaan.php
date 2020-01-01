@@ -18,14 +18,12 @@ class Sewaan extends CI_Controller
     function index()
     {
         $data['sewaan'] = $this->Sewaan_model->get_all_sewaan();
-
-        $data['_view'] = 'sewaan/index';
         $data['title'] = 'keranjang';
 
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar', $data);
-        $this->load->view('cart', $data);
+        $this->load->view('sewaan/index', $data);
         $this->load->view('templates/footer');
     }
 

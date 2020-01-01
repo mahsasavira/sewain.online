@@ -1,26 +1,40 @@
-<?php echo form_open('sewaan/add'); ?>
+<?php echo form_open('sewaan/add',array("class"=>"form-horizontal")); ?>
 
-	<div>
-		ID BARANG : 
-		<input type="text" name="ID_BARANG" value="<?php echo $this->input->post('ID_BARANG'); ?>" />
+	<div class="form-group">
+		<label for="ID_BARANG" class="col-md-4 control-label">ID BARANG</label>
+		<div class="col-md-8">
+			<input type="text" name="ID_BARANG" value="<?php echo $this->input->post('ID_BARANG'); ?>" class="form-control" id="ID_BARANG" />
+		</div>
 	</div>
-	<div>
-		ID USER : 
-		<input type="text" name="ID_USER" value="<?php echo $this->input->post('ID_USER'); ?>" />
+	<div class="form-group">
+		<label for="ID_USER" class="col-md-4 control-label">ID USER</label>
+		<div class="col-md-8">
+			<input type="text" name="ID_USER" value="<?php echo $this->input->post('ID_USER'); ?>" class="form-control" id="ID_USER" />
+		</div>
 	</div>
-	<div>
-		TARIF : 
-		<input type="text" name="TARIF" value="<?php echo $this->input->post('TARIF'); ?>" />
+	<div class="form-group">
+		<label for="TARIF" class="col-md-4 control-label">TARIF</label>
+		<div class="col-md-8">
+			<input type="text" name="TARIF" value="<?php echo $this->input->post('TARIF'); ?>" class="form-control" id="TARIF" />
+		</div>
 	</div>
-	<div>
-		DURASI SEWA : 
-		<input type="text" name="DURASI_SEWA" value="<?php echo $this->input->post('DURASI_SEWA'); ?>" />
+	<div class="form-group">
+		<label for="DURASI_SEWA" class="col-md-4 control-label">DURASI SEWA</label>
+		<div class="col-md-8">
+			<input type="text" name="DURASI_SEWA" value="<?php echo $this->input->post('DURASI_SEWA'); ?>" class="form-control" id="DURASI_SEWA" />
+		</div>
 	</div>
-	<div>
-		STATUS : 
-		<input type="text" name="STATUS" value="<?php echo $this->input->post('STATUS'); ?>" />
+	<div class="form-group">
+		<label for="STATUS" class="col-md-4 control-label">STATUS</label>
+		<div class="col-md-8">
+			<input type="text" name="STATUS" value="<?php echo $this->input->post('STATUS'); ?>" class="form-control" id="STATUS" />
+		</div>
 	</div>
 	
-	<button type="submit">Save</button>
+	<div class="form-group">
+		<div class="col-sm-offset-4 col-sm-8">
+			<button type="submit" class="btn btn-success">Save</button>
+        </div>
+	</div>
 
 <?php echo form_close(); ?>
