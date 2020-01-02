@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="icon" href="<?php echo base_url('assets/'); ?>img/favicon.png" type="image/png" />
     <title>Sewain.online - <?= $title; ?></title>
 
     <!-- Custom fonts for this template-->
