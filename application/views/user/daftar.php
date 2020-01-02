@@ -5,23 +5,22 @@
       <div class="card card-signin my-5">
         <div class="card-body">
           <h5 class="card-title text-center">Daftar</h5>
-          <form class="form-signin">
+          <form class="form-signin" method="post" action="<?= base_url('user/daftar')?>">
             <div class="form-label-group">
-              <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+              <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
               <label for="inputUsername">Username</label>
             </div>
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Alamat email" required>
+              <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Alamat email" required>
               <label for="inputEmail">Alamat email</label>
             </div>
 
-
             <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Kata sandi" required>
+              <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Kata sandi" required>
               <label for="inputPassword">Kata sandi</label>
             </div>
             <div class="form-label-group">
-              <input type="password" id="inputPassword2" class="form-control" placeholder="Konfirmasi Kata sandi" required>
+              <input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="Konfirmasi Kata sandi" required>
               <label for="inputPassword2">Konfirmasi kata sandi</label>
             </div>
 

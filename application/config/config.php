@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/2019/tugas_mahsa/sewain.online/';
+$config['base_url'] = 'http://localhost/PWL/CodeIgniter/sewain.online/';
 
 /*
 |--------------------------------------------------------------------------
