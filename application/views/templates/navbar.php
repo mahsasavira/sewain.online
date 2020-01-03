@@ -58,19 +58,16 @@
                   </li>
                 <?php } ?>
 
-
                 <?php if ($this->session->userdata('username')) { ?>
                   <li class="nav-item">
 
                     <div class="dropdown show">
                       <a href="#" class="icons dropdown-toggle" role="button" id="dropdownProfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="ti-user" aria-hidden="true"></i>
+                        <i class="ti-user" aria-hidden="true">
+                          <?= $this->session->userdata['username']?></i>
                       </a>
 
-
-
                       <div class="dropdown-menu p-2 col-auto" aria-labelledby="dropdownProfil">
-
                         <a href="<?= base_url('user/keluar'); ?>" class="dropdown-item">Keluar</a>
                       </div>
 
