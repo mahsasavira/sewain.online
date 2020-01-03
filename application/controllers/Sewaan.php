@@ -18,7 +18,7 @@ class Sewaan extends CI_Controller
     function index()
     {
         $data['sewaan'] = $this->Sewaan_model->get_all_sewaan();
-        $data['title'] = 'keranjang';
+        $data['title'] = 'Keranjang';
 
 
         $this->load->view('templates/header', $data);

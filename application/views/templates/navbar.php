@@ -37,17 +37,18 @@
                         <i class="ti-search" aria-hidden="true"></i>
                       </a>
 
-                      <div class="row">
 
-                        <form class="dropdown-menu p-4 col-md-4" aria-labelledby="dropdownMenuCari">
-                          <div class="form-group">
-                            <input type="text" class="form-control" id="inputCariBarang" placeholder="Cari barang">
-                          </div>
-                          <button type="submit" class="btn btn-primary">Cari</button>
-                        </form>
 
-                      </div>
+                      <form class="dropdown-menu p-2 form-inline" aria-labelledby="dropdownMenuCari">
+
+                        <input type="text" width="60" class="form-control mb-2" id="inputCariBarang" placeholder="Cari barang">
+
+                        <button type="submit" class="btn btn-sm btn-login">Cari</button>
+                      </form>
+
+
                     </div>
+
                   </li>
 
                   <li class="nav-item">
@@ -58,12 +59,31 @@
                 <?php } ?>
 
 
+                <?php if ($this->session->userdata('username')) { ?>
+                  <li class="nav-item">
 
-                <li class="nav-item">
-                  <a href="<?= base_url('user/masuk'); ?>" class="icons">
-                    <i class="ti-shift-right" aria-hidden="true"></i>
-                  </a>
-                </li>
+                    <div class="dropdown show">
+                      <a href="#" class="icons dropdown-toggle" role="button" id="dropdownProfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="ti-user" aria-hidden="true"></i>
+                      </a>
+
+
+
+                      <div class="dropdown-menu p-2 col-auto" aria-labelledby="dropdownProfil">
+
+                        <a href="<?= base_url('user/keluar'); ?>" class="dropdown-item">Keluar</a>
+                      </div>
+
+
+                    </div>
+                  </li>
+                <?php } else { ?>
+                  <li class="nav-item">
+                    <a href="<?= base_url('user/masuk'); ?>" class="icons">
+                      <i class="ti-shift-right" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                <?php } ?>
               </ul>
             </div>
           </div>

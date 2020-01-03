@@ -2,9 +2,13 @@
 <section class="home_banner_area mb-40">
 	<div class="banner_inner d-flex align-items-center">
 		<div class="container">
+			<div class="row">
+				<div class="col-md-6"><?= $this->session->flashdata('pesan'); ?></div>
+			</div>
+
 			<div class="banner_content row">
 				<div class="col-auto">
-					<h3 class="py-2 px-2" style="color: #e5e5e5 !important; background-color: #71cd14;"><small style="color: #cccccc !important">Selamat datang di, </small> <br />Sewain</h3>
+					<h3 class="py-2 px-2" style="color: #000000 !important; background-color: #f1d7c8;"><small style="color: #6f6f6f !important">Selamat datang di, </small> <br />Sewain</h3>
 				</div>
 			</div>
 		</div>
