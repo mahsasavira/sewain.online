@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <link rel="icon" href="<?php echo base_url('assets/'); ?>img/favicon.png" type="image/png" />
-  <title>Sewain.online - <?= $title; ?></title>
+  <title>sewain.online - <?= $title; ?></title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="<?php echo base_url('assets/'); ?>css/bootstrap.css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/'); ?>vendors/linericon/style.css" />
@@ -22,5 +22,16 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/'); ?>css/responsive.css" />
   <link rel="stylesheet" href="<?php echo base_url('assets/'); ?>css/custom-login.css" />
 </head>
-
-<body>
+<div class="top_menu">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="float-left">
+              <p>Phone: +62 857 5563 4251</p>
+              <p>email: sewain@online.online</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </html>
