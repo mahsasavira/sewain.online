@@ -119,4 +119,5 @@ class Barang extends CI_Controller
         } else
             show_error('The barang you are trying to delete does not exist.');
     }
+    
 }

@@ -37,8 +37,6 @@
                         <i class="ti-search" aria-hidden="true"></i>
                       </a>
 
-
-
                       <form class="dropdown-menu p-2 form-inline" aria-labelledby="dropdownMenuCari">
 
                         <input type="text" width="60" class="form-control mb-2" id="inputCariBarang" placeholder="Cari barang">
@@ -60,16 +58,17 @@
 
                 <?php if ($this->session->userdata('username')) { ?>
                   <li class="nav-item">
-
+                    
                     <div class="dropdown show">
-                      <a href="#" class="icons dropdown-toggle" role="button" id="dropdownProfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="ti-user" aria-hidden="true">
-                          <?= $this->session->userdata['username']?></i>
-                      </a>
+                      <a href="<?php echo base_url('profile'); ?>" class="icons" role="button">
+                      <span class="ti-user" aria-hidden="true">                        
+                              <?= $this->session->userdata['username']?>
+                              </span>
+                              </a>
 
-                      <div class="dropdown-menu p-2 col-auto" aria-labelledby="dropdownProfil">
+                      <!-- <div class="dropdown-menu p-2 col-auto" aria-labelledby="dropdownProfil">
                         <a href="<?= base_url('user/keluar'); ?>" class="dropdown-item">Keluar</a>
-                      </div>
+                      </div> -->
 
 
                     </div>
