@@ -25,7 +25,7 @@ class User_model extends CI_Model
     function get_all_user()
     {
         $this->db->order_by('ID_USER', 'desc');
-        return $this->db->get('user')->result_array();
+        return $this->db->get('USER')->result_array();
     }
 
     /*
@@ -43,7 +43,7 @@ class User_model extends CI_Model
     function update_user($ID_USER, $params)
     {
         $this->db->where('ID_USER', $ID_USER);
-        return $this->db->update('user', $params);
+        return $this->db->update('USER', $params);
     }
 
     /*
@@ -51,6 +51,6 @@ class User_model extends CI_Model
      */
     function delete_user($ID_USER)
     {
-        return $this->db->delete('user', array('ID_USER' => $ID_USER));
+        return $this->db->delete('USER', array('ID_USER' => $ID_USER));
     }
 }
