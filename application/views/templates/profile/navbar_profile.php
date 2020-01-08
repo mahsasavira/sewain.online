@@ -6,6 +6,21 @@
         <i class="fa fa-bars"></i>
     </button>
 
+    <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
+          <div class="row w-100">
+            <div class="col-lg-7 pr-0">
+              <ul class="nav navbar-nav center_nav pull-right">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= base_url(); ?>">Beranda</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= base_url('barang'); ?>">Barang</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?= base_url('contact'); ?>">Kontak</a>
+                </li>
+              </ul>
+            </div>
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 
@@ -15,25 +30,7 @@
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata['username']?></span>
                 <!-- <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> -->
             </a>
-            <!-- Dropdown - User Information -->
-            <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
-                </a>
-            </div> -->
         </li>
-
     </ul>
-
 </nav>
 <!-- End of Topbar -->

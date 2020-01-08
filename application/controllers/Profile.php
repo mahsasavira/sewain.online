@@ -14,7 +14,7 @@ class Profile extends CI_Controller
 
         $this->load->view('templates/profile/header_profile', $data);
         $this->load->view('templates/profile/navbar_profile', $data);
-        $this->load->view('profile/index', $data);
+        $this->load->view('profile/dashboard', $data);
         $this->load->view('templates/profile/footer_profile', $data);
     }
 }

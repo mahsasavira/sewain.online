@@ -47,18 +47,29 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('barang'); ?>">
+                <a class="nav-link" href="<?=base_url('profile/index')?>">
                     <i class="fas fa-fw fa-cube"></i>
-                    <span>Barang</span></a>
+                    <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('barang'); ?>">
+                <a class="nav-link" href="<?=base_url('sewakan/index')?>">
                     <i class="fas fa-fw fa-cube"></i>
-                    <span>Barang</span></a>
-            </li><li class="nav-item">
-                <a class="nav-link" href="<?= base_url('barang'); ?>">
+                    <span>Sewakan Barang</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?=base_url('riwayat/index')?>">
                     <i class="fas fa-fw fa-cube"></i>
-                    <span>Barang</span></a>
+                    <span>Riwayat Saya</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?=base_url('akun/index')?>">
+                    <i class="fas fa-fw fa-cube"></i>
+                    <span>Akun Saya</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('user/keluar'); ?>">
+                    <i class="fas fa-fw"></i>
+                    <span>Keluar</span></a>
             </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
