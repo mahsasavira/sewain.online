@@ -22,7 +22,7 @@
 		<div class="row justify-content-center">
 			<div class="col-lg-12">
 				<div class="main_title">
-					<h2><span>Barang Yang Kami Sewakan</span></h2>
+					<h2><span>Barang Terbaru</span></h2>
 				</div>
 			</div>
 		</div>
