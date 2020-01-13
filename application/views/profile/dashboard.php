@@ -1,7 +1,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-7">
             <h1 class="h3 mb-4 text-gray-800">Dashboard</h1>
 
@@ -36,14 +36,14 @@
                 <a href="<?= base_url('akun/index'); ?>">Klik disini</a>
             </p>
         </div>
-    </div>
+    </div> -->
     <hr>
 
     <div class="row">
         <div class="col-auto">
             <div class="card shadow border-left-primary">
                 <div class="card-body">
-                    <h5 class="card-title">Barang yang kamu sewakan</h5>
+                    <h5 class="card-title">Barang yang disewakan</h5>
                     <table class="table">
                         <thead>
                             <tr>
