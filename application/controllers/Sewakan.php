@@ -46,9 +46,7 @@ class Sewakan extends CI_Controller
         $this->form_validation->set_rules('NAMABARANG', 'NAMABARANG', 'required');
         $this->form_validation->set_rules('JENIS', 'JENIS', 'required');
         $this->form_validation->set_rules('DESKRIPSI', 'DESKRIPSI', 'required');
-        $this->form_validation->set_rules('STATUS', 'STATUS', 'required');
         $this->form_validation->set_rules('HARGA', 'HARGA', 'required');
-        $this->form_validation->set_rules('GAMBAR', 'GAMBAR', 'required');
 
         if ($this->form_validation->run()) {
             $upload_image = $_FILES['image']['name'];
@@ -67,12 +65,13 @@ class Sewakan extends CI_Controller
                         'NAMABARANG' => $this->input->post('NAMABARANG'),
                         'JENIS' => $this->input->post('JENIS'),
                         'DESKRIPSI' => $this->input->post('DESKRIPSI'),
-                        'STATUS' => $this->input->post('STATUS'),
+                        'STATUS' => 'pending',
                         'HARGA' => $this->input->post('HARGA'),
                         'GAMBAR' => $new_image,
                     );
         
                     $barang_id = $this->barang_model->add_barang($params);
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Barang berhasil ditambah.</div>');
                     redirect('sewakan');
                 } else {
                     echo $this->upload->display_errors();
@@ -84,28 +83,20 @@ class Sewakan extends CI_Controller
                     'NAMABARANG' => $this->input->post('NAMABARANG'),
                     'JENIS' => $this->input->post('JENIS'),
                     'DESKRIPSI' => $this->input->post('DESKRIPSI'),
-                    'STATUS' => $this->input->post('STATUS'),
+                    'STATUS' => 'pending',
                     'HARGA' => $this->input->post('HARGA'),
                     'GAMBAR' => $default_image,
                 );
     
                 $barang_id = $this->barang_model->add_barang($params);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Barang berhasil ditambah.</div>');
                 redirect('sewakan');
             }
-
-            // $params = array(
-            //     'NAMABARANG' => $this->input->post('NAMABARANG'),
-            //     'JENIS' => $this->input->post('JENIS'),
-            //     'DESKRIPSI' => $this->input->post('DESKRIPSI'),
-            //     'STATUS' => $this->input->post('STATUS'),
-            //     'HARGA' => $this->input->post('HARGA'),
-            //     'GAMBAR' => $this->input->post('GAMBAR'),
-            // );
-
-            // $barang_id = $this->barang_model->add_barang($params);
-            // redirect('sewakan');
         } else {
             $data['title'] = 'Sewakan Barang';
+            $data['barang'] = $this->barang_model->get_all_barang($params);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Terjadi error.</div>');
 
             $this->load->view('templates/profile/header_profile', $data);
             $this->load->view('templates/profile/navbar_profile', $data);

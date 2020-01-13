@@ -3,6 +3,8 @@
 
     <h1 class="h3 mb-4 text-gray-800">Sewakan Barang</h1>
 
+    <?php echo $this->session->flashdata('message'); ?>
+
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahBarang">
         Tambah Barang
     </button>
@@ -38,13 +40,6 @@
                             <div class="col-md-8">
                                 <input type="text" name="DESKRIPSI" value="<?= set_value('DESKRIPSI'); ?>" class="form-control" id="DESKRIPSI" />
                                 <span class="text-danger"><?php echo form_error('DESKRIPSI'); ?></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="STATUS" class="col-md-4 control-label"><span class="text-danger">*</span>STATUS</label>
-                            <div class="col-md-8">
-                                <input type="text" name="STATUS" value="<?= set_value('STATUS'); ?>" class="form-control" id="STATUS" />
-                                <span class="text-danger"><?php echo form_error('STATUS'); ?></span>
                             </div>
                         </div>
                         <div class="form-group">
