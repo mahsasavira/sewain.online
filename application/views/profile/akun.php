@@ -71,12 +71,12 @@
                                 <input type="text" value="<?php echo set_value('kota', $user['kota']); ?>" name="kota" class="form-control" id="inputKote" autocomplate="off" placeholder="Kota">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="inputStatus" class="col-sm-4 col-form-label">Status</label>
                             <div class="col-sm-8">
                                 <input type="text" name="status" value="<?php echo set_value('status', $user['status']); ?>" class="form-control" id="inputStatus" autocomplate="off" placeholder="Status">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group row">
                             <label for="inputKTP" class="col-sm-4 col-form-label">KTP</label>
                             <div class="col-sm-8">

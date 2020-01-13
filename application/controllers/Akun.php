@@ -31,7 +31,7 @@ function edit()
             $this->form_validation->set_rules('nama', 'nama', 'required');
             $this->form_validation->set_rules('alamat', 'alamat', 'required');
             $this->form_validation->set_rules('kota', 'kota', 'required');
-            $this->form_validation->set_rules('status', 'status', 'required');
+            // $this->form_validation->set_rules('status', 'status', 'required');
             // $this->form_validation->set_rules('ktp', 'ktp', 'required');
             // $this->form_validation->set_rules('sim', 'sim', 'required');
             // $this->form_validation->set_rules('kk', 'kk', 'required');
@@ -42,7 +42,7 @@ function edit()
                     'nama' => $this->input->post('nama'),
                     'alamat' => $this->input->post('alamat'),
                     'kota' => $this->input->post('kota'),
-                    'status' => $this->input->post('status'),
+                    // 'status' => $this->input->post('status'),
                     'ktp' => "",
                     'sim' => "",
                     'kk' => "",
