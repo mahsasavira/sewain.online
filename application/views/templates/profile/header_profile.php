@@ -30,7 +30,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<? base_url('admin'); ?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<? base_url('Home') ?>">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-store"></i>
                 </div>
@@ -47,23 +47,23 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('profile/index')?>">
-                    <i class="fas fa-fw fa-cube"></i>
+                <a class="nav-link" href="<?= base_url('profile/index') ?>">
+                    <i class="fas fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('sewakan/index')?>">
-                    <i class="fas fa-fw fa-cube"></i>
+                <a class="nav-link" href="<?= base_url('sewakan/index') ?>">
+                    <i class="fas fa-fw fa-exchange-alt"></i>
                     <span>Sewakan Barang</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('riwayat/index')?>">
-                    <i class="fas fa-fw fa-cube"></i>
+                <a class="nav-link" href="<?= base_url('riwayat/index') ?>">
+                    <i class="fas fa-fw fa-history"></i>
                     <span>Riwayat Saya</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('akun/index')?>">
-                    <i class="fas fa-fw fa-cube"></i>
+                <a class="nav-link" href="<?= base_url('akun/index') ?>">
+                    <i class="fas fa-fw fa-user"></i>
                     <span>Akun Saya</span></a>
             </li>
             <li class="nav-item">

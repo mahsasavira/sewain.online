@@ -5,17 +5,6 @@
                 <div class="single-product">
                     <div class="product-img">
                         <img class="img-fluid w-100" src="<?php echo base_url('assets/'); ?>img/product/inspired-product/i1.jpg" alt="" />
-                        <div class="p_icon">
-                            <a href="#">
-                                <i class="ti-eye"></i>
-                            </a>
-                            <a href="#">
-                                <i class="ti-heart"></i>
-                            </a>
-                            <a href="#">
-                                <i class="ti-shopping-cart"></i>
-                            </a>
-                        </div>
                     </div>
                     <div class="product-btm">
                         <a href="#" class="d-block">
