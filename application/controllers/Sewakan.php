@@ -17,6 +17,16 @@ class Sewakan extends CI_Controller
      */
     function index()
     {
+        $params['limit'] = RECORDS_PER_PAGE;
+        $params['offset'] = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
+
+        $config = $this->config->item('pagination');
+        $config['base_url'] = site_url('barang/index?');
+        $config['total_rows'] = $this->barang_model->get_all_barang_count();
+        $this->pagination->initialize($config);
+
+        $data['barang'] = $this->barang_model->get_all_barang($params);
+
         //$data['sewaan'] = $this->Sewaan_model->get_all_sewaan();
         $data['title'] = 'Sewakan Barang';
 
@@ -24,5 +34,126 @@ class Sewakan extends CI_Controller
         $this->load->view('templates/profile/navbar_profile', $data);
         $this->load->view('profile/sewakan', $data);
         $this->load->view('templates/profile/footer_profile', $data);
+    }
+
+    /*
+     * Adding a new barang
+     */
+    function add()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('NAMABARANG', 'NAMABARANG', 'required');
+        $this->form_validation->set_rules('JENIS', 'JENIS', 'required');
+        $this->form_validation->set_rules('DESKRIPSI', 'DESKRIPSI', 'required');
+        $this->form_validation->set_rules('STATUS', 'STATUS', 'required');
+        $this->form_validation->set_rules('HARGA', 'HARGA', 'required');
+        $this->form_validation->set_rules('GAMBAR', 'GAMBAR', 'required');
+
+        if ($this->form_validation->run()) {
+            $upload_image = $_FILES['image']['name'];
+
+            if ($upload_image) {
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['max_size']      = '2048';
+                $config['upload_path'] = './assets/img/product/sewa/';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('image')) {
+                    $new_image = $this->upload->data('file_name');
+
+                    $params = array(
+                        'NAMABARANG' => $this->input->post('NAMABARANG'),
+                        'JENIS' => $this->input->post('JENIS'),
+                        'DESKRIPSI' => $this->input->post('DESKRIPSI'),
+                        'STATUS' => $this->input->post('STATUS'),
+                        'HARGA' => $this->input->post('HARGA'),
+                        'GAMBAR' => $new_image,
+                    );
+        
+                    $barang_id = $this->barang_model->add_barang($params);
+                    redirect('sewakan');
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            } else {
+                $default_image = 'default.jpg';
+
+                $params = array(
+                    'NAMABARANG' => $this->input->post('NAMABARANG'),
+                    'JENIS' => $this->input->post('JENIS'),
+                    'DESKRIPSI' => $this->input->post('DESKRIPSI'),
+                    'STATUS' => $this->input->post('STATUS'),
+                    'HARGA' => $this->input->post('HARGA'),
+                    'GAMBAR' => $default_image,
+                );
+    
+                $barang_id = $this->barang_model->add_barang($params);
+                redirect('sewakan');
+            }
+
+            // $params = array(
+            //     'NAMABARANG' => $this->input->post('NAMABARANG'),
+            //     'JENIS' => $this->input->post('JENIS'),
+            //     'DESKRIPSI' => $this->input->post('DESKRIPSI'),
+            //     'STATUS' => $this->input->post('STATUS'),
+            //     'HARGA' => $this->input->post('HARGA'),
+            //     'GAMBAR' => $this->input->post('GAMBAR'),
+            // );
+
+            // $barang_id = $this->barang_model->add_barang($params);
+            // redirect('sewakan');
+        } else {
+            $data['title'] = 'Sewakan Barang';
+
+            $this->load->view('templates/profile/header_profile', $data);
+            $this->load->view('templates/profile/navbar_profile', $data);
+            $this->load->view('profile/sewakan', $data);
+            $this->load->view('templates/profile/footer_profile', $data);
+        }
+    }
+
+    /*
+     * Deleting barang
+     */
+    function remove($ID_BARANG)
+    {
+        $barang = $this->barang_model->get_barang($ID_BARANG);
+
+        // check if the barang exists before trying to delete it
+        if (isset($barang['ID_BARANG'])) {
+            $this->barang_model->delete_barang($ID_BARANG);
+            redirect('sewakan');
+        } else
+            show_error('The barang you are trying to delete does not exist.');
+    }
+
+    /*
+     * Adding a new sewaan
+     */
+    function sewakan_barang($ID_BARANG)
+    {
+        var_dump($ID_BARANG);
+
+        // $user = $this->user_model->get_user($this->session->userdata('username'));
+
+        // var_dump($user);
+
+        // if (isset($_POST) && count($_POST) > 0) {
+        //     $params = array(
+        //         'ID_BARANG' => $ID_BARANG,
+        //         'ID_USER' => $user['ID_USER'],
+        //         'TARIF' => $this->input->post('TARIF'),
+        //         'DURASI_SEWA' => $this->input->post('DURASI_SEWA'),
+        //         'STATUS' => "pending",
+        //     );
+
+        //     //$sewaan_id = $this->Sewaan_model->add_sewaan($params);
+        //     redirect('sewaan/index');
+        // } else {
+        //     $data['_view'] = 'sewaan/add';
+        //     $this->load->view('layouts/main', $data);
+        // }
     }
 }
