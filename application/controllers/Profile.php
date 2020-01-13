@@ -10,12 +10,13 @@ class Profile extends CI_Controller
 
     function index()
     {
-        $id['user'] = '$ID_USER';
+        $data['user'] = '$ID_USER';
+        $data['title'] = 'Dashboard';
 
-        $this->load->view('templates/profile/header_profile', $id);
-        $this->load->view('templates/profile/navbar_profile', $id);
-        $this->load->view('profile/dashboard', $id);
-        $this->load->view('templates/profile/footer_profile', $id);
+        $this->load->view('templates/profile/header_profile', $data);
+        $this->load->view('templates/profile/navbar_profile', $data);
+        $this->load->view('profile/dashboard', $data);
+        $this->load->view('templates/profile/footer_profile', $data);
     }
 
 }
