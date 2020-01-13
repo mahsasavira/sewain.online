@@ -14,7 +14,7 @@
             <a class="nav-link text-dark" href="<?= base_url(); ?>">Beranda</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark" href="<?= base_url('barang'); ?>">Barang</a>
+            <a class="nav-link text-dark" href="<?= base_url('barang'); ?>">Katalog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-dark" href="<?= base_url('contact'); ?>">Kontak</a>
