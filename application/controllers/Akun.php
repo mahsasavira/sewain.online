@@ -113,7 +113,7 @@ class Akun extends CI_Controller
         // check if the user exists before trying to edit it
         $data['user'] = $this->User_model->get_user($this->session->userdata('username'));
 
-        if ($this->form_validation->run()) {
+       // if ($this->form_validation->run()) {
             $upload_foto = $_FILES['foto']['name'];
 
             if ($upload_foto) {
@@ -132,15 +132,18 @@ class Akun extends CI_Controller
                     $this->User_model->update_user($data['user']['ID_USER'], $params);
                     redirect('akun');
                 } else {
-                    echo $this->upload->display_errors();
+                    // echo $this->upload->display_errors();
+                    echo "1";
                 }
             }else{
-                redirect('sewakan');
+                // redirect('sewakan');
+                echo "2";
             }
 
-        } else {
-            $data['_view'] = 'profile/akun';
-            $this->load->view('layouts/main', $data);
-        }
+        //} else {
+            // $data['_view'] = 'profile/akun';
+            // $this->load->view('layouts/main', $data);
+          //  echo "3";
+        //}
     }
 }
