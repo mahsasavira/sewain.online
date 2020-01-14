@@ -25,8 +25,8 @@ class Barang extends CI_Controller
         $config['total_rows'] = $this->Barang_model->get_all_barang_count();
         $this->pagination->initialize($config);
 
-        $data['barang'] = $this->Barang_model->get_all_barang($params);
-
+        $data['barang'] = $this->Barang_model->get_all_sewaan();
+        //var_dump($data['barang']);
         $data['title'] = 'Barang';
 
         $this->load->view('templates/header', $data);
