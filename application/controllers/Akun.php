@@ -42,31 +42,43 @@ class Akun extends CI_Controller
         if ($this->form_validation->run()) {
 
             $upload_ktp = $_FILES['ktp']['name'];
-            $upload_sim = $_FILES['sim']['sim'];
-            $upload_kk = $_FILES['kk']['sim'];
-            $upload_ktm = $_FILES['kartu_mahasiswa']['kartu_mahasiswa'];
-            if ($upload_ktp) {
+            $upload_sim = $_FILES['sim']['name'];
+            $upload_kk = $_FILES['kk']['name'];
+            $upload_ktm = $_FILES['kartu_mahasiswa']['name'];
+
+
+            if ($upload_ktp && $upload_sim && $upload_kk && $upload_ktm) {
+
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size']      = '2048';
                 $config['upload_path'] = './assets/img/product/user/';
 
                 $this->load->library('upload', $config);
+                $ktp = $this->upload->do_upload('ktp');
+                $result1 = $this->upload->data();
+                $sim = $this->upload->do_upload('sim');
+                $result2 = $this->upload->data();
+                $kk = $this->upload->do_upload('kk');
+                $result3 = $this->upload->data();
+                $ktm = $this->upload->do_upload('kartu_mahasiswa');
+                $result4 = $this->upload->data();
+                $result = array('ktp'=>$result1,'sim'=>$result2,'kk'=>$result3,'kartu_mahasiswa'=>$result4);
+                if ($ktp && $sim && $kk && $ktm) {
 
-                if ($this->upload->do_upload('ktp') || $this->upload->do_upload('sim') || $this->upload->do_upload('kk') || $this->upload->do_upload('kartu_mahasiswa')) {
-                    $new_ktp = $this->upload->data('file_name');
-                    $new_sim = $this->upload->data('file_name');
-                    $new_kk = $this->upload->data('file_name');
-                    $new_ktm = $this->upload->data('file_name');
+                    echo $hasilKTP = $result['ktp']['file_name'];
+                    echo $hasilSIM = $result['sim']['file_name'];
+                    echo $hasilKK = $result['kk']['file_name'];
+                    echo $hasilKTM = $result['kartu_mahasiswa']['file_name'];
 
                     $params = array(
                         'nama' => $this->input->post('nama'),
                         'alamat' => $this->input->post('alamat'),
                         'kota' => $this->input->post('kota'),
                         'telepon' => $this->input->post('telepon'),
-                        'ktp' => $new_ktp,
-                        'sim' => $new_sim,
-                        'kk' => $new_kk,
-                        'kartu_mahasiswa' => $new_ktm,
+                        'ktp' => $hasilKTP,
+                        'sim' => $hasilSIM,
+                        'kk' => $hasilKK,
+                        'kartu_mahasiswa' => $hasilKTM,
                     );
 
                     $this->User_model->update_user($data['user']['ID_USER'], $params);
@@ -75,27 +87,60 @@ class Akun extends CI_Controller
                 }else {
                     echo $this->upload->display_errors();
                 }
+
             }else{
 
                 $params = array(
-                        'nama' => $this->input->post('nama'),
-                        'alamat' => $this->input->post('alamat'),
-                        'kota' => $this->input->post('kota'),
-                        'telepon' => $this->input->post('telepon'),
-                        'ktp' => $new_ktp,
-                        'sim' => '',
-                        'kk' => '',
-                        'kartu_mahasiswa' => '',
-                    );
+                    'nama' => $this->input->post('nama'),
+                    'alamat' => $this->input->post('alamat'),
+                    'kota' => $this->input->post('kota'),
+                    'telepon' => $this->input->post('telepon')
+                );
 
                 $this->User_model->update_user($data['user']['ID_USER'], $params);
                 redirect('akun');
             }
-
+            
         } else {
             $data['_view'] = 'profile/akun';
             $this->load->view('layouts/main', $data);
                 // echo "h";
         }
     } 
+
+    function editfoto () {
+        $this->load->library('form_validation');
+        // check if the user exists before trying to edit it
+        $data['user'] = $this->User_model->get_user($this->session->userdata('username'));
+
+        if ($this->form_validation->run()) {
+            $upload_foto = $_FILES['foto']['name'];
+
+            if ($upload_foto) {
+
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['max_size']      = '2048';
+                $config['upload_path'] = './assets/img/product/user/';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('foto')) {
+                    $foto = $this->upload->data('file_name');
+
+                    $params = array('foto' => $foto,);
+
+                    $this->User_model->update_user($data['user']['ID_USER'], $params);
+                    redirect('akun');
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }else{
+                redirect('sewakan');
+            }
+
+        } else {
+            $data['_view'] = 'profile/akun';
+            $this->load->view('layouts/main', $data);
+        }
+    }
 }
