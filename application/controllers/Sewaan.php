@@ -102,4 +102,23 @@ class Sewaan extends CI_Controller
         } else
             show_error('The sewaan you are trying to delete does not exist.');
     }
+
+    function checkout()
+    {
+        $data['title'] = 'Keranjang';
+        $data['barang'] = array(
+            'ID_SEWAAN' => $this->input->post('id_sewaan'),
+            'NAMA_BARANG' => $this->input->post('nama_barang'),
+            'GAMBAR' => $this->input->post('gambar'),
+            'DURASI_SEWA' => $this->input->post('durasi_sewa'),
+            'HARGA' => $this->input->post('harga'),
+            'TOTAL' => $this->input->post('total')
+        );
+
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar', $data);
+        $this->load->view('sewaan/checkout', $data);
+        $this->load->view('templates/footer');
+    }
 }

@@ -33,9 +33,6 @@
 
                   <li class="nav-item">
                     <div class="dropdown show">
-                      <a href="#" class="icons dropdown-toggle" role="button" id="dropdownMenuCari" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="ti-search" aria-hidden="true"></i>
-                      </a>
 
                       <form class="dropdown-menu p-2 form-inline" aria-labelledby="dropdownMenuCari">
 

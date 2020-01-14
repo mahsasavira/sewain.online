@@ -26,6 +26,12 @@
             </thead>
             <tbody>
               <?php foreach ($barang as $B) { ?>
+                <?php
+
+                $id_sewaan = $B['ID_SEWAAN'];
+                $gambar = $B['GAMBAR'];
+                $nama_barang = $B['NAMABARANG'];
+                ?>
                 <tr>
                   <td>
                     <div class="media">
@@ -38,10 +44,10 @@
                     </div>
                   </td>
                   <td>
-                    <h5><?= $B['TARIF']; ?></h5>
+                    <h5><?= $tarif = $B['TARIF']; ?></h5>
                   </td>
                   <td>
-                    <h5><?= $B['DURASI_SEWA']; ?> Hari</h5>
+                    <h5><?= $durasi_sewa =  $B['DURASI_SEWA']; ?> Hari</h5>
                   </td>
                   <td>
                     <h5><?= $total = $B['TARIF'] * $B['DURASI_SEWA'] ?></h5>
@@ -70,7 +76,16 @@
                 <td></td>
                 <td>
                   <div class="checkout_btn_inner">
-                    <a class="main_btn" href="#">Bayar Sekarang</a>
+                    <form method="post" action="<?= base_url('sewaan/checkout'); ?>">
+                      <input type="hidden" name="id_sewaan" value="<?= $id_sewaan; ?>">
+                      <input type="hidden" name="nama_barang" value="<?= $nama_barang; ?>">
+                      <input type="hidden" name="gambar" value="<?= $gambar; ?>">
+                      <input type="hidden" name="durasi_sewa" value="<?= $durasi_sewa; ?>">
+                      <input type="hidden" name="harga" value="<?= $tarif; ?>">
+                      <input type="hidden" name="total" value="<?= $total; ?>">
+                      <button type="submit" class="main_btn">Bayar Sekarang</b>
+                    </form>
+
                   </div>
                 </td>
               </tr>
