@@ -9,7 +9,7 @@ class Sewakan extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        //$this->load->model('Sewaan_model');
+        $this->load->model('Sewaan_model');
     }
 
     /*
@@ -69,7 +69,7 @@ class Sewakan extends CI_Controller
                         'HARGA' => $this->input->post('HARGA'),
                         'GAMBAR' => $new_image,
                     );
-        
+
                     $barang_id = $this->barang_model->add_barang($params);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Barang berhasil ditambah.</div>');
                     redirect('sewakan');
@@ -87,7 +87,7 @@ class Sewakan extends CI_Controller
                     'HARGA' => $this->input->post('HARGA'),
                     'GAMBAR' => $default_image,
                 );
-    
+
                 $barang_id = $this->barang_model->add_barang($params);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Barang berhasil ditambah.</div>');
                 redirect('sewakan');
@@ -125,26 +125,25 @@ class Sewakan extends CI_Controller
      */
     function sewakan_barang($ID_BARANG)
     {
-        var_dump($ID_BARANG);
 
-        // $user = $this->user_model->get_user($this->session->userdata('username'));
+        $user = $this->user_model->get_user($this->session->userdata('username'));
 
         // var_dump($user);
 
-        // if (isset($_POST) && count($_POST) > 0) {
-        //     $params = array(
-        //         'ID_BARANG' => $ID_BARANG,
-        //         'ID_USER' => $user['ID_USER'],
-        //         'TARIF' => $this->input->post('TARIF'),
-        //         'DURASI_SEWA' => $this->input->post('DURASI_SEWA'),
-        //         'STATUS' => "pending",
-        //     );
+        if (isset($_POST) && count($_POST) > 0) {
+            $params = array(
+                'ID_BARANG' => $ID_BARANG,
+                'ID_USER' => $user['ID_USER'],
+                'TARIF' => $this->input->post('TARIF'),
+                'DURASI_SEWA' => $this->input->post('DURASI_SEWA'),
+                'STATUS' => "pending",
+            );
 
-        //     //$sewaan_id = $this->Sewaan_model->add_sewaan($params);
-        //     redirect('sewaan/index');
-        // } else {
-        //     $data['_view'] = 'sewaan/add';
-        //     $this->load->view('layouts/main', $data);
-        // }
+            $sewaan_id = $this->Sewaan_model->add_sewaan($params);
+            redirect('sewaan/index');
+        } else {
+            $data['_view'] = 'sewaan/add';
+            $this->load->view('layouts/main', $data);
+        }
     }
 }
