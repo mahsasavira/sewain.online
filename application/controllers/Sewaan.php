@@ -31,12 +31,11 @@ class Sewaan extends CI_Controller
     {
         $data['barang'] = $this->Sewaan_model->get_detail_barang($ID_SEWAAN);
         $data['title'] = 'Keranjang';
-        
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar', $data);
         $this->load->view('sewaan/index', $data);
         $this->load->view('templates/footer');
-
     }
 
     /*

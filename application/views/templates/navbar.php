@@ -48,23 +48,24 @@
                     </div>
 
                   </li>
-
-                  <li class="nav-item">
-                    <a href="<?= base_url('sewaan'); ?>" class="icons">
-                      <i class="ti-shopping-cart"></i>
-                    </a>
-                  </li>
+                  <?php if (!isset($barang)) { ?>
+                    <li class="nav-item">
+                      <a href="<?= base_url('sewaan'); ?>" class="icons">
+                        <i class="ti-shopping-cart"></i>
+                      </a>
+                    </li>
+                  <?php } ?>
                 <?php } ?>
 
                 <?php if ($this->session->userdata('username')) { ?>
                   <li class="nav-item">
-                    
+
                     <div class="dropdown show">
                       <a href="<?php echo base_url('profile'); ?>" class="icons" role="button">
-                      <span class="ti-user" aria-hidden="true">                        
-                              <?= $this->session->userdata['username']?>
-                              </span>
-                              </a>
+                        <span class="ti-user" aria-hidden="true">
+                          <?= $this->session->userdata['username'] ?>
+                        </span>
+                      </a>
 
                       <!-- <div class="dropdown-menu p-2 col-auto" aria-labelledby="dropdownProfil">
                         <a href="<?= base_url('user/keluar'); ?>" class="dropdown-item">Keluar</a>
