@@ -10,6 +10,8 @@ class Sewaan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Sewaan_model');
+        $this->load->model('Pembayaran_model');
+        $this->load->model('Transaksi_sewa_model');
     }
 
     /*
@@ -36,6 +38,44 @@ class Sewaan extends CI_Controller
         $this->load->view('templates/navbar', $data);
         $this->load->view('sewaan/index', $data);
         $this->load->view('templates/footer');
+    }
+
+    function konfirmasi_sewaan($ID_SEWAAN) {
+        $created_on = $this->getExactTodayDate();
+
+        $barang = $this->Sewaan_model->get_detail_barang($ID_SEWAAN);
+
+        //var_dump($barang);
+        $params = array(
+            'ID_SEWAAN' => $barang[0]['ID_SEWAAN'],
+            'ID_USER' => $barang[0]['ID_USER'],
+            'TGL_TRANSAKSI' => $created_on,
+            'LAMA_SEWA' => $barang[0]['DURASI_SEWA'],
+            'TOTAL_TARIF' => $barang[0]['TARIF'],
+        );
+        
+        $transaksi_sewa_id = $this->Transaksi_sewa_model->add_transaksi_sewa($params);
+
+        $params = array(
+            'ID_TRAKSAKSI' => $transaksi_sewa_id,
+            'STATUS' => "verified",
+            'TGL_BAYAR' => $this->getExactTodayDate(),
+        );
+        
+        $pembayaran_id = $this->Pembayaran_model->add_pembayaran($params);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penyewaan barang berhasil.</div>');
+        redirect('barang');
+    }
+    
+    public function getExactTodayDate()
+    {
+        //get today's exact date
+        $offset = 7 * 60 * 60; //converting 7 hours to seconds. / (GMT+7)
+        $dateFormat = "Y-m-d H:i:s";
+        $now = gmdate($dateFormat, time() + $offset);
+
+        return $now;
     }
 
     /*
@@ -114,7 +154,6 @@ class Sewaan extends CI_Controller
             'HARGA' => $this->input->post('harga'),
             'TOTAL' => $this->input->post('total')
         );
-
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar', $data);

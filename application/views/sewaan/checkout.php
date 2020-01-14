@@ -14,6 +14,8 @@
                                 Total harga : <?= $barang['TOTAL']; ?><br>
                             </p>
                             <p>Silahkan bayar ke rekening BCA berikut : 12038219031</p>
+
+                            <a href="<?php echo base_url('sewaan/konfirmasi_sewaan/') . $barang['ID_SEWAAN']; ?>">Konfirmasi Pembayaran</a>
                         </div>
 
                     </div>

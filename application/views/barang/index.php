@@ -1,3 +1,5 @@
+<?php echo $this->session->flashdata('message'); ?>
+
 <section class="feature_product_area section_gap_bottom_custom">
     <div class="container mt-4">
         <div class="row">
