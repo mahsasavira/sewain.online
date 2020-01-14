@@ -141,11 +141,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="DURASI_SEWA" class="col-md-4 control-label"><span class="text-danger">*</span>DURASI SEWA</label>
-                                <div class="col-md-8">
+                                <div class="col-md-3">
                                     <input type="text" name="DURASI_SEWA" value="<?= set_value('DURASI_SEWA'); ?>" class="form-control" id="DURASI_SEWA" />
                                     <span class="text-danger"><?php echo form_error('DURASI_SEWA'); ?></span>
+                                    <span>/ hari</span>
                                 </div>
                             </div>
+
                     </div>
                     <div class="modal-footer">
                         <div class="form-group">
