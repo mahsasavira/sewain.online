@@ -33,14 +33,14 @@
     <hr>
     <div class="row mt-3">
         <div class="col-md-4">
-            <div class="card shadow mb-4" style="width: 18rem;">
+            <div class="card shadow mb-4" style="width: 20rem;">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-dark"><?= $this->session->userdata('username'); ?></h6>
                 </div>
                 <div class="card-body text-center">
+                    <?= form_open_multipart('akun/editfoto'); ?>
                     <?php
                     if ($user['foto'] == NULL) { ?>
-                        <?= form_open_multipart('akun/editfoto'); ?>
                         <img class="card-img-top mb-3" src="<?= base_url('assets/img/profile/user.png'); ?>" alt="Foto profile">
                         <div class="custom-file">
                             <input type="file" name="foto" value="<?php echo set_value('foto', $user['foto']); ?>" class="form-control-file" id="inputFoto">
@@ -51,10 +51,16 @@
 
                     <?php  } else { ?>
                         <div class="col-sm-8">
-                            <img style="height:180px; width:250px;" src="<?php echo base_url('assets/img/product/user/') . $user['foto']; ?>">
+                            <img style="height:250px; width:16rem;" src="<?php echo base_url('assets/img/product/user/') . $user['foto']; ?>">
                         </div>
-                        <div class="col-sm-8">
-                            <button type="submit" class="btn btn-success">Simpan</button>
+                        <hr>
+                        <div class="custom-file">
+                            <input type="file" name="foto" value="<?php echo set_value('foto', $user['foto']); ?>" class="form-control-file" id="inputFoto">
+                        </div>
+                        <div class="text-center" style="padding-top: 2vw; margin-left: 5vw">
+                            <div class="col-sm-8">
+                                <button type="submit" class="btn btn-success">Simpan</button>
+                            </div>
                         </div>
                         <?php
                     }
@@ -96,43 +102,27 @@
                     </div>
                 </div>
                 <?php
-                if ($user['ktp'] != NULL) { ?>
-
+                if (($user['ktp/sim'] != NULL) && $user['kk'] !=NULL) { ?>
                     <div class="form-group row">
-                        <label for="inputKTP" class="col-sm-4 col-form-label">KTP</label>
+                        <label for="inputKTP" class="col-sm-4 col-form-label">KTP/SIM</label>
                         <div class="col-sm-8">
-                            <img style="height:180px; width:250px;" src="<?php echo base_url('assets/img/product/user/') . $user['ktp']; ?>">
+                            <input type="text" name="ktp/sim" value="<?php $user['ktp/sim'];?>" style="display: none">
+                            <img style="height:180px; width:250px;" src="<?php echo base_url('assets/img/product/user/') . $user['ktp/sim']; ?>">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputSIM" class="col-sm-4 col-form-label">SIM</label>
+                        <label for="inputKK" class="col-sm-4 col-form-label">KK</label>
                         <div class="col-sm-8">
-                            <img style="height:180px; width:250px;" src="<?php echo base_url('assets/img/product/user/') . $user['sim']; ?>">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputKK" class="col-sm-4 col-form-label">Kartu Keluarga</label>
-                        <div class="col-sm-8">
+                            <input type="text" name="kk" value="<?php $user['kk'];?>" style="display: none">
                             <img style="height:180px; width:250px;" src="<?php echo base_url('assets/img/product/user/') . $user['kk']; ?>">
                         </div>
                     </div>
+                <?php  } else if ($user['ktp/sim'] != NULL) { ?>
                     <div class="form-group row">
-                        <label for="inputKTM" class="col-sm-4 col-form-label">KTM</label>
+                        <label for="inputKTP" class="col-sm-4 col-form-label">KTP/SIM</label>
                         <div class="col-sm-8">
-                            <img style="height:180px; width:250px;" src="<?php echo base_url('assets/img/product/user/') . $user['kartu_mahasiswa']; ?>" >
-                        </div>
-                    </div>
-                <?php  } else { ?>
-                    <div class="form-group row">
-                        <label for="inputKTP" class="col-sm-4 col-form-label">KTP</label>
-                        <div class="col-sm-8">
-                            <input type="file" name="ktp" value="<?php echo set_value('ktp', $user['ktp']); ?>" class="form-control-file" id="inputKTP">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputSIM" class="col-sm-4 col-form-label">SIM</label>
-                        <div class="col-sm-8">
-                            <input type="file" name="sim" value="<?php echo set_value('sim', $user['sim']); ?>" class="form-control-file" id="inputSIM">
+                            <input type="text" name="ktp_sim" <?php set_value('ktp/sim');?> style="display: none">
+                            <img style="height:180px; width:250px;" src="<?php echo base_url('assets/img/product/user/') . $user['ktp/sim']; ?>">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -141,15 +131,34 @@
                             <input type="file" name="kk" value="<?php echo set_value('kk', $user['kk']); ?>" class="form-control-file" id="inputKK">
                         </div>
                     </div>
+                <?php  } else if ($user['kk'] != NULL) { ?>
                     <div class="form-group row">
-                        <label for="inputKTM" class="col-sm-4 col-form-label">KTM</label>
+                        <label for="inputKTP" class="col-sm-4 col-form-label">KTP/SIM</label>
                         <div class="col-sm-8">
-                            <input type="file" name="kartu_mahasiswa" value="<?php echo set_value('kartu_mahasiswa', $user['kartu_mahasiswa']); ?>" class="form-control-file" id="inputKTM">
+                            <input type="file" name="ktp/sim" value="<?php echo set_value('ktp', $user['ktp/sim']); ?>" class="form-control-file" id="inputKTP">
                         </div>
                     </div>
-                    <?php
-                }
-                ?>
+                    <div class="form-group row">
+                        <label for="inputKK" class="col-sm-4 col-form-label">KK</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="k_k" <?php set_value('kk');?> style="display: none">
+                            <img style="height:180px; width:250px;" src="<?php echo base_url('assets/img/product/user/') . $user['kk']; ?>">
+                        </div>
+                    </div>
+                <?php } else { ?>
+                    <div class="form-group row">
+                        <label for="inputKTP" class="col-sm-4 col-form-label">KTP/SIM</label>
+                        <div class="col-sm-8">
+                            <input type="file" name="ktp/sim" value="<?php echo set_value('ktp', $user['ktp/sim']); ?>" class="form-control-file" id="inputKTP">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputKK" class="col-sm-4 col-form-label">Kartu Keluarga</label>
+                        <div class="col-sm-8">
+                            <input type="file" name="kk" value="<?php echo set_value('kk', $user['kk']); ?>" class="form-control-file" id="inputKK">
+                        </div>
+                    </div>
+                <?php } ?>
 
                 <div class="form-group row">
                     <div class="text-center" style="padding-top: 5vw; margin-left: 30vw">

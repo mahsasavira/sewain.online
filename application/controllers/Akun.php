@@ -41,52 +41,86 @@ class Akun extends CI_Controller
 
         if ($this->form_validation->run()) {
 
-            $upload_ktp = $_FILES['ktp']['name'];
-            $upload_sim = $_FILES['sim']['name'];
+            $upload_ktp_sim = $_FILES['ktp/sim']['name'];
             $upload_kk = $_FILES['kk']['name'];
-            $upload_ktm = $_FILES['kartu_mahasiswa']['name'];
 
 
-            if ($upload_ktp && $upload_sim && $upload_kk && $upload_ktm) {
+            if ($upload_ktp_sim) {
 
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size']      = '2048';
                 $config['upload_path'] = './assets/img/product/user/';
 
                 $this->load->library('upload', $config);
-                $ktp = $this->upload->do_upload('ktp');
+                $ktp_sim = $this->upload->do_upload('ktp/sim');
                 $result1 = $this->upload->data();
-                $sim = $this->upload->do_upload('sim');
-                $result2 = $this->upload->data();
+                $result = array('ktp/sim'=>$result1);
+
+                $hasilKTP_SIM = $result['ktp/sim']['file_name'];
+
+                $params = array(
+                    'nama' => $this->input->post('nama'),
+                    'alamat' => $this->input->post('alamat'),
+                    'kota' => $this->input->post('kota'),
+                    'telepon' => $this->input->post('telepon'),
+                    'ktp/sim' => $hasilKTP_SIM,
+                );
+
+                $this->User_model->update_user($data['user']['ID_USER'], $params);
+                redirect('akun');
+
+            }elseif ($upload_kk) {
+
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['max_size']      = '2048';
+                $config['upload_path'] = './assets/img/product/user/';
+
+                $this->load->library('upload', $config);
                 $kk = $this->upload->do_upload('kk');
-                $result3 = $this->upload->data();
-                $ktm = $this->upload->do_upload('kartu_mahasiswa');
-                $result4 = $this->upload->data();
-                $result = array('ktp'=>$result1,'sim'=>$result2,'kk'=>$result3,'kartu_mahasiswa'=>$result4);
-                if ($ktp && $sim && $kk && $ktm) {
+                $result2 = $this->upload->data();
+                $result = array('kk'=>$result2);
 
-                    echo $hasilKTP = $result['ktp']['file_name'];
-                    echo $hasilSIM = $result['sim']['file_name'];
-                    echo $hasilKK = $result['kk']['file_name'];
-                    echo $hasilKTM = $result['kartu_mahasiswa']['file_name'];
+                
+                $hasilKK = $result['kk']['file_name'];
 
-                    $params = array(
-                        'nama' => $this->input->post('nama'),
-                        'alamat' => $this->input->post('alamat'),
-                        'kota' => $this->input->post('kota'),
-                        'telepon' => $this->input->post('telepon'),
-                        'ktp' => $hasilKTP,
-                        'sim' => $hasilSIM,
-                        'kk' => $hasilKK,
-                        'kartu_mahasiswa' => $hasilKTM,
-                    );
+                $params = array(
+                    'nama' => $this->input->post('nama'),
+                    'alamat' => $this->input->post('alamat'),
+                    'kota' => $this->input->post('kota'),
+                    'telepon' => $this->input->post('telepon'),
+                    'kk' => $hasilKK,
+                );
 
-                    $this->User_model->update_user($data['user']['ID_USER'], $params);
-                    redirect('akun');
+                $this->User_model->update_user($data['user']['ID_USER'], $params);
+                redirect('akun');
+                
 
-                }else {
-                    echo $this->upload->display_errors();
-                }
+            }elseif ($upload_ktp && $upload_kk) {
+                $config['allowed_types'] = 'gif|jpg|png|jpeg';
+                $config['max_size']      = '2048';
+                $config['upload_path'] = './assets/img/product/user/';
+
+                $this->load->library('upload', $config);
+                $ktp_sim = $this->upload->do_upload('ktp/sim');
+                $result1 = $this->upload->data();
+                $kk = $this->upload->do_upload('kk');
+                $result2 = $this->upload->data();
+                $result = array('ktp/sim'=>$result1,'kk'=>$result2);
+
+                $hasilKTP_SIM = $result['ktp/sim']['file_name'];
+                $hasilKK = $result['kk']['file_name'];
+
+                $params = array(
+                    'nama' => $this->input->post('nama'),
+                    'alamat' => $this->input->post('alamat'),
+                    'kota' => $this->input->post('kota'),
+                    'telepon' => $this->input->post('telepon'),
+                    'ktp/sim' => $hasilKTP_SIM,
+                    'kk' => $hasilKK,
+                );
+
+                $this->User_model->update_user($data['user']['ID_USER'], $params);
+                redirect('akun');
 
             }else{
 
@@ -100,7 +134,7 @@ class Akun extends CI_Controller
                 $this->User_model->update_user($data['user']['ID_USER'], $params);
                 redirect('akun');
             }
-            
+
         } else {
             $data['_view'] = 'profile/akun';
             $this->load->view('layouts/main', $data);
@@ -114,36 +148,28 @@ class Akun extends CI_Controller
         $data['user'] = $this->User_model->get_user($this->session->userdata('username'));
 
        // if ($this->form_validation->run()) {
-            $upload_foto = $_FILES['foto']['name'];
+        $upload_foto = $_FILES['foto']['name'];
 
-            if ($upload_foto) {
+        if ($upload_foto) {
 
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
-                $config['max_size']      = '2048';
-                $config['upload_path'] = './assets/img/product/user/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size']      = '2048';
+            $config['upload_path'] = './assets/img/product/user/';
 
-                $this->load->library('upload', $config);
+            $this->load->library('upload', $config);
 
-                if ($this->upload->do_upload('foto')) {
-                    $foto = $this->upload->data('file_name');
+            if ($this->upload->do_upload('foto')) {
+                $foto = $this->upload->data('file_name');
 
-                    $params = array('foto' => $foto,);
+                $params = array('foto' => $foto,);
 
-                    $this->User_model->update_user($data['user']['ID_USER'], $params);
-                    redirect('akun');
-                } else {
-                    // echo $this->upload->display_errors();
-                    echo "1";
-                }
-            }else{
-                // redirect('sewakan');
-                echo "2";
+                $this->User_model->update_user($data['user']['ID_USER'], $params);
+                redirect('akun');
+            } else {
+                echo $this->upload->display_errors();
             }
-
-        //} else {
-            // $data['_view'] = 'profile/akun';
-            // $this->load->view('layouts/main', $data);
-          //  echo "3";
-        //}
+        }else{
+            redirect('akun');
+        }
     }
 }
