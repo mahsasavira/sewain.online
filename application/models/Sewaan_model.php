@@ -56,7 +56,6 @@ class Sewaan_model extends CI_Model
 
     function get_detail_barang($ID_SEWAAN)
     {
-
         return $this->db->query("SELECT * FROM SEWAAN JOIN BARANG ON SEWAAN.ID_BARANG = BARANG.ID_BARANG WHERE SEWAAN.ID_SEWAAN = '$ID_SEWAAN'")->result_array();
     }
 

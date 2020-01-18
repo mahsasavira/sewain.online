@@ -15,7 +15,17 @@
                             </p>
                             <p>Silahkan bayar ke rekening BCA berikut : 12038219031</p>
 
-                            <a href="<?php echo base_url('sewaan/konfirmasi_sewaan/') . $barang['ID_SEWAAN']; ?>">Konfirmasi Pembayaran</a>
+                            <?= form_open_multipart('sewaan/konfirmasi_sewaan/' . $barang['ID_SEWAAN']); ?>
+                            <div class="custom-file">
+                                <input type="file" name="foto"
+                                 class="form-control-file" id="inputFoto">
+                            </div>
+                            <div class="text-center" style="padding-top: 2vw; margin-left: 5vw">
+                                <div class="col-sm-8">
+                                    <button type="submit" class="btn btn-primary">Kirim Bukti Pembayaran</button>
+                                </div>
+                            </div>
+                            </form>
                         </div>
 
                     </div>

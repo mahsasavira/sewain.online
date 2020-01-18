@@ -60,16 +60,73 @@ class Sewaan extends CI_Controller
 
         $transaksi_sewa_id = $this->Transaksi_sewa_model->add_transaksi_sewa($params);
 
-        $params = array(
-            'ID_TRAKSAKSI' => $transaksi_sewa_id,
-            'STATUS' => "verified",
-            'TGL_BAYAR' => $this->getExactTodayDate(),
-        );
+        // if ($this->form_validation->run()) {
+        $upload_foto = $_FILES['foto']['name'];
 
-        $pembayaran_id = $this->Pembayaran_model->add_pembayaran($params);
-        $this->Sewaan_model->update_sewaan($ID_SEWAAN, ['status' => 'Disewa']);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penyewaan barang berhasil.</div>');
-        redirect('barang');
+        if ($upload_foto) {
+
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size']      = '2048';
+            $config['upload_path'] = './assets/img/sewaan/bukti_pembayaran/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) {
+                $foto = $this->upload->data('file_name');
+
+                $params = array(
+                    'ID_TRAKSAKSI' => $transaksi_sewa_id,
+                    'STATUS' => "unverified",
+                    'TGL_BAYAR' => $this->getExactTodayDate(),
+                    'BUKTI_PEMBAYARAN' => $foto,
+                );
+
+                $pembayaran_id = $this->Pembayaran_model->add_pembayaran($params);
+                $this->Sewaan_model->update_sewaan($ID_SEWAAN, ['status' => 'Disewa']);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penyewaan barang berhasil. Menunggu konfirmasi dari pemilik barang.</div>');
+                redirect('barang');
+            } else {
+                echo $this->upload->display_errors();
+            }
+        } else {
+            redirect('akun');
+        }
+    }
+
+    function konfirmasi_pembayaran($pembayaran_id) {
+        
+    }
+
+    function editfoto()
+    {
+        $this->load->library('form_validation');
+        // check if the user exists before trying to edit it
+        $data['user'] = $this->User_model->get_user($this->session->userdata('username'));
+
+        // if ($this->form_validation->run()) {
+        $upload_foto = $_FILES['foto']['name'];
+
+        if ($upload_foto) {
+
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config['max_size']      = '2048';
+            $config['upload_path'] = './assets/img/product/user/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('foto')) {
+                $foto = $this->upload->data('file_name');
+
+                $params = array('foto' => $foto,);
+
+                $this->User_model->update_user($data['user']['ID_USER'], $params);
+                redirect('akun');
+            } else {
+                echo $this->upload->display_errors();
+            }
+        } else {
+            redirect('akun');
+        }
     }
 
     public function getExactTodayDate()

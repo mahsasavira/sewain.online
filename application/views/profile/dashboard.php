@@ -43,6 +43,58 @@
         <div class="col-auto">
             <div class="card shadow border-left-primary">
                 <div class="card-body">
+                    <h5 class="card-title">Konfirmasi Pembayaran</h5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Tanggal Transaksi</th>
+                                <th scope="col">Nama Barang</th>
+                                <th scope="col">Bukti Pembayaran</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $no = 1;
+                            foreach ($detail_pembayaran as $p) { ?>
+                                <tr>
+                                    <th class="align-middle" scope="row"><?= $no; ?></th>
+                                    <td class="align-middle"><?= $p['TGL_BAYARAN']; ?></td>
+                                    <td class="align-middle"><?= $p['NAMA BARANG']; ?></td>
+                                    <td class="align-middle">
+                                        <img src="<?= base_url('assets/img/sewaan/bukti_pembayaran/' . $p['BUKTI_PEMBAYARAN']); ?>" width="100px" height="100px" class="img-thumbnail">
+                                    </td>
+                                    <td class="align-middle"><?= $p['STATUS']; ?></td>
+                                    <?php if ($p['STATUS'] == 'verified') { ?>
+                                    <td class="align-middle">
+                                        <div class="btn-group" role="group">
+                                            <a href="<?php echo site_url('sewaan/konfirmasi_pembayaran/' . $p['ID_PEMBAYARAN']); ?>" class="btn btn-sm btn-danger">Hapus</a>
+                                        </div>
+                                    </td>
+                                    <?php } ?>
+                                </tr>
+
+                            <?php
+                                $no++;
+                            } ?>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-auto">
+            <div class="card shadow border-left-primary">
+                <div class="card-body">
                     <h5 class="card-title">Barang yang disewakan</h5>
                     <table class="table">
                         <thead>

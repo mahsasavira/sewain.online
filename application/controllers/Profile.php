@@ -7,6 +7,7 @@ class Profile extends CI_Controller
         parent::__construct();
         $this->load->model('User_model');
         $this->load->model('Sewaan_model');
+        $this->load->model('Pembayaran_model');
     }
 
     function index()
@@ -18,6 +19,10 @@ class Profile extends CI_Controller
         // echo "<pre>";
         // var_dump($data);
         // die;
+
+        $id = $data['user']['ID_USER'];
+        $data['detail_pembayaran'] = $this->Pembayaran_model->get_user_pembayaran_konfirmasi($id);
+
         $this->load->view('templates/profile/header_profile', $data);
         $this->load->view('templates/profile/navbar_profile', $data);
         $this->load->view('profile/dashboard', $data);

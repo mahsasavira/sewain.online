@@ -27,6 +27,12 @@ class Pembayaran_model extends CI_Model
         $this->db->order_by('ID_PEMBAYARAN', 'desc');
         return $this->db->get('PEMBAYARAN')->result_array();
     }
+
+    function get_user_pembayaran_konfirmasi($ID_USER)
+    {
+        return $this->db->query("SELECT * FROM PEMBAYARAN JOIN TRANSAKSI_SEWA ON PEMBAYARAN.ID_TRAKSAKSI = TRANSAKSI_SEWA.ID_TRAKSAKSI JOIN SEWAAN
+        ON TRANSAKSI_SEWA.ID_SEWAAN = SEWAAN.ID_SEWAAN JOIN BARANG ON BARANG.ID_BARANG = SEWAAN.ID_BARANG WHERE SEWAAN.ID_USER = '$ID_USER'")->result_array();
+    }
         
     /*
      * function to add new pembayaran
