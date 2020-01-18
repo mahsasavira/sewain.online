@@ -13,6 +13,7 @@ class Sewaan extends CI_Controller
         $this->load->model('Pembayaran_model');
         $this->load->model('Transaksi_sewa_model');
         $this->load->model('Barang_model');
+        $this->load->model('User_model');
     }
 
     /*
@@ -46,7 +47,6 @@ class Sewaan extends CI_Controller
         $created_on = $this->getExactTodayDate();
 
         $barang = $this->Sewaan_model->get_detail_barang($ID_SEWAAN);
-
         $ID_SEWAAN = $barang[0]['ID_SEWAAN'];
         //var_dump($barang);
         $params = array(
@@ -55,6 +55,7 @@ class Sewaan extends CI_Controller
             'TGL_TRANSAKSI' => $created_on,
             'LAMA_SEWA' => $barang[0]['DURASI_SEWA'],
             'TOTAL_TARIF' => $barang[0]['TARIF'],
+            'ID_PENYEWA' => $this->session->userdata('username')
         );
 
         $transaksi_sewa_id = $this->Transaksi_sewa_model->add_transaksi_sewa($params);

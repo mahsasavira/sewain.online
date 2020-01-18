@@ -9,7 +9,8 @@ class Riwayat extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        //$this->load->model('Sewaan_model');
+        $this->load->model('User_model');
+        $this->load->model('Transaksi_sewa_model');
     }
 
     /*
@@ -17,13 +18,17 @@ class Riwayat extends CI_Controller
      */
     function index()
     {
-        //$data['sewaan'] = $this->Sewaan_model->get_all_sewaan();
+        $data['user'] = $this->User_model->get_user($this->session->userdata('username'));
+        $data['transaksi'] = $this->Transaksi_sewa_model->get_transaksi_sewa_by_user($data['user']['ID_USER']);
         $data['title'] = 'Riwayat';
-        
+
+        // echo "<pre>";
+        // var_dump($data);
+        // die;
+
         $this->load->view('templates/profile/header_profile', $data);
         $this->load->view('templates/profile/navbar_profile', $data);
         $this->load->view('profile/riwayat', $data);
         $this->load->view('templates/profile/footer_profile', $data);
     }
-
 }
