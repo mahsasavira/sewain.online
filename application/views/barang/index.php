@@ -4,7 +4,7 @@
     <div class="container mt-4">
         <div class="row">
             <?php foreach ($barang as $B) { ?>
-                <div class="col-lg-3 col-md-4">
+                <div class="col-lg-3 col-md-4 my-5">
                     <div class="single-product">
                         <div class="product-img">
                             <img class="img-fluid w-100" src="<?php echo base_url('assets/img/product/sewa/') . $B['GAMBAR']; ?>" alt="" />

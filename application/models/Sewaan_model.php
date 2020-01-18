@@ -59,4 +59,9 @@ class Sewaan_model extends CI_Model
 
         return $this->db->query("SELECT * FROM SEWAAN JOIN BARANG ON SEWAAN.ID_BARANG = BARANG.ID_BARANG WHERE SEWAAN.ID_SEWAAN = '$ID_SEWAAN'")->result_array();
     }
+
+    function get_sewaan_by_id_user($ID_USER)
+    {
+        return $this->db->query("SELECT * FROM SEWAAN JOIN BARANG ON SEWAAN.ID_BARANG = BARANG.ID_BARANG WHERE SEWAAN.ID_USER = '$ID_USER'")->result_array();
+    }
 }

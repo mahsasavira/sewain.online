@@ -94,9 +94,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($barang as $B) { ?>
+                            <?php
+                            $no = 1;
+                            foreach ($barang as $B) { ?>
                                 <tr>
-                                    <td><?php echo $B['ID_BARANG']; ?></td>
+                                    <td><?php echo $no; ?></td>
                                     <td><?php echo $B['NAMABARANG']; ?></td>
                                     <td><?php echo $B['JENIS']; ?></td>
                                     <td><img style="height:130px; width:130px;" src="<?php echo base_url('assets/img/product/sewa/') . $B['GAMBAR']; ?>" class="img-thumbnail">
@@ -111,7 +113,9 @@
                                         </div>
                                     </td>
                                 </tr>
-                            <?php } ?>
+                            <?php
+                                $no++;
+                            } ?>
                         </tbody>
                     </table>
                 </div>

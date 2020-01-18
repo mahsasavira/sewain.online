@@ -12,6 +12,7 @@ class Sewaan extends CI_Controller
         $this->load->model('Sewaan_model');
         $this->load->model('Pembayaran_model');
         $this->load->model('Transaksi_sewa_model');
+        $this->load->model('Barang_model');
     }
 
     /*
@@ -40,11 +41,13 @@ class Sewaan extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    function konfirmasi_sewaan($ID_SEWAAN) {
+    function konfirmasi_sewaan($ID_SEWAAN)
+    {
         $created_on = $this->getExactTodayDate();
 
         $barang = $this->Sewaan_model->get_detail_barang($ID_SEWAAN);
 
+        $ID_SEWAAN = $barang[0]['ID_SEWAAN'];
         //var_dump($barang);
         $params = array(
             'ID_SEWAAN' => $barang[0]['ID_SEWAAN'],
@@ -53,7 +56,7 @@ class Sewaan extends CI_Controller
             'LAMA_SEWA' => $barang[0]['DURASI_SEWA'],
             'TOTAL_TARIF' => $barang[0]['TARIF'],
         );
-        
+
         $transaksi_sewa_id = $this->Transaksi_sewa_model->add_transaksi_sewa($params);
 
         $params = array(
@@ -61,13 +64,13 @@ class Sewaan extends CI_Controller
             'STATUS' => "verified",
             'TGL_BAYAR' => $this->getExactTodayDate(),
         );
-        
-        $pembayaran_id = $this->Pembayaran_model->add_pembayaran($params);
 
+        $pembayaran_id = $this->Pembayaran_model->add_pembayaran($params);
+        $this->Sewaan_model->update_sewaan($ID_SEWAAN, ['status' => 'Disewa']);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Penyewaan barang berhasil.</div>');
         redirect('barang');
     }
-    
+
     public function getExactTodayDate()
     {
         //get today's exact date

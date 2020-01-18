@@ -46,11 +46,11 @@
 
                   </li>
                   <?php if (!isset($barang)) { ?>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                       <a href="<?= base_url('sewaan'); ?>" class="icons">
                         <i class="ti-shopping-cart"></i>
                       </a>
-                    </li>
+                    </li> -->
                   <?php } ?>
                 <?php } ?>
 

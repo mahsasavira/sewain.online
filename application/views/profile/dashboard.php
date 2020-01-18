@@ -58,54 +58,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th class="align-middle" scope="row">1</th>
-                                <td class="align-middle">Kamera</td>
-                                <td class="align-middle">Elektronik</td>
-                                <td class="bg-success align-middle">Disewa</td>
-                                <td class="align-middle">Rp. 150.000,-</td>
-                                <td class="align-middle">
-                                    <img src="<?= base_url('assets/img/product/sewa/camera.jpg') ?>" width="100px" height="100px" class="img-thumbnail">
-                                </td>
-                                <td class="align-middle">
-                                    <ul>
-                                        <li>Mudah digunakan</li>
-                                        <li>Lensa baru</li>
-                                        <li>Tersedia tripod</li>
-                                        <li>Tersedia 2 baterai cadangan</li>
-                                    </ul>
-                                </td>
-                                <td class="align-middle">
-                                    <div class="btn-group" role="group">
-                                        <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th class="align-middle" scope="row">2</th>
-                                <td class="align-middle">HDD External</td>
-                                <td class="align-middle">Elektronik</td>
-                                <td class="bg-warning align-middle">Belum Disewa</td>
-                                <td class="align-middle">Rp. 250.000,-</td>
-                                <td class="align-middle">
-                                    <img src="<?= base_url('assets/img/product/sewa/harddisk.jpg') ?>" width="100px" height="100px" class="img-thumbnail">
-                                </td>
-                                <td class="align-middle">
-                                    <ul>
-                                        <li>Deskripsi satu</li>
-                                        <li>Deskripsi dua</li>
-                                        <li>Deskripsi tiga</li>
-                                        <li>Deskripsi empat</li>
-                                    </ul>
-                                </td>
-                                <td class="align-middle">
-                                    <div class="btn-group" role="group">
-                                        <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                                        <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php
+                            $no = 1;
+                            foreach ($sewaan as $S) { ?>
+                                <tr>
+                                    <th class="align-middle" scope="row"><?= $no; ?></th>
+                                    <td class="align-middle"><?= $S['NAMABARANG']; ?></td>
+                                    <td class="align-middle"><?= $S['JENIS']; ?></td>
+                                    <td class="align-middle"><?= $S['STATUS']; ?></td>
+                                    <td class="align-middle"><?= $S['TARIF']; ?></td>
+                                    <td class="align-middle">
+                                        <img src="<?= base_url('assets/img/product/sewa/' . $S['GAMBAR']); ?>" width="100px" height="100px" class="img-thumbnail">
+                                    </td>
+                                    <td class="align-middle">
+                                        <?= $S['DESKRIPSI']; ?>
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="btn-group" role="group">
+                                            <a href="#" data-toggle="modal" data-target="#sewakanBarang-<?= $S['ID_BARANG']; ?>" class="btn btn-sm btn-primary">Edit</a>
+                                            <a href="<?php echo site_url('sewakan/remove_sewa/' . $S['ID_SEWAAN']); ?>" class="btn btn-sm btn-danger">Hapus</a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            <?php
+                                $no++;
+                            } ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -116,7 +95,7 @@
     </div>
 
 
-    <div class="row mt-5">
+    <!-- <div class="row mt-5">
         <div class="col-auto">
             <div class="card shadow border-left-primary">
                 <div class="card-body">
@@ -189,7 +168,7 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
 
 </div>
 <!-- /.container-fluid -->

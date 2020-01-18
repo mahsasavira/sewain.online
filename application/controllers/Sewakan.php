@@ -71,7 +71,7 @@ class Sewakan extends CI_Controller
                         'NAMABARANG' => $this->input->post('NAMABARANG'),
                         'JENIS' => $this->input->post('JENIS'),
                         'DESKRIPSI' => $this->input->post('DESKRIPSI'),
-                        'STATUS' => 'pending',
+                        'STATUS' => 'Belum Disewa',
                         'HARGA' => $this->input->post('HARGA'),
                         'GAMBAR' => $new_image,
                     );
@@ -126,6 +126,19 @@ class Sewakan extends CI_Controller
             show_error('The barang you are trying to delete does not exist.');
     }
 
+
+    function remove_sewa($ID_SEWAAN)
+    {
+        $barang_sewa = $this->Sewaan_model->get_sewaan($ID_SEWAAN);
+
+        // check if the barang exists before trying to delete it
+        if (isset($barang_sewa['ID_SEWAAN'])) {
+            $this->Sewaan_model->delete_sewaan($ID_SEWAAN);
+            redirect('profile/index');
+        } else
+            show_error('The barang you are trying to delete does not exist.');
+    }
+
     /*
      * Adding a new sewaan
      */
@@ -134,15 +147,13 @@ class Sewakan extends CI_Controller
 
         $user = $this->user_model->get_user($this->session->userdata('username'));
 
-        // var_dump($user);
-
         if (isset($_POST) && count($_POST) > 0) {
             $params = array(
                 'ID_BARANG' => $ID_BARANG,
                 'ID_USER' => $user['ID_USER'],
                 'TARIF' => $this->input->post('TARIF'),
                 'DURASI_SEWA' => $this->input->post('DURASI_SEWA'),
-                'STATUS' => "pending",
+                'STATUS' => "Belum Disewa",
             );
 
             $sewaan_id = $this->Sewaan_model->add_sewaan($params);

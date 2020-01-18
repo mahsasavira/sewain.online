@@ -25,7 +25,7 @@ class Akun extends CI_Controller
     }
 
     function edit()
-    {   
+    {
         $this->load->library('form_validation');
         // check if the user exists before trying to edit it
         $data['user'] = $this->User_model->get_user($this->session->userdata('username'));
@@ -54,7 +54,7 @@ class Akun extends CI_Controller
                 $this->load->library('upload', $config);
                 $ktp_sim = $this->upload->do_upload('ktp/sim');
                 $result1 = $this->upload->data();
-                $result = array('ktp/sim'=>$result1);
+                $result = array('ktp/sim' => $result1);
 
                 $hasilKTP_SIM = $result['ktp/sim']['file_name'];
 
@@ -68,8 +68,7 @@ class Akun extends CI_Controller
 
                 $this->User_model->update_user($data['user']['ID_USER'], $params);
                 redirect('akun');
-
-            }elseif ($upload_kk) {
+            } elseif ($upload_kk) {
 
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size']      = '2048';
@@ -78,9 +77,9 @@ class Akun extends CI_Controller
                 $this->load->library('upload', $config);
                 $kk = $this->upload->do_upload('kk');
                 $result2 = $this->upload->data();
-                $result = array('kk'=>$result2);
+                $result = array('kk' => $result2);
 
-                
+
                 $hasilKK = $result['kk']['file_name'];
 
                 $params = array(
@@ -93,9 +92,7 @@ class Akun extends CI_Controller
 
                 $this->User_model->update_user($data['user']['ID_USER'], $params);
                 redirect('akun');
-                
-
-            }elseif ($upload_ktp && $upload_kk) {
+            } elseif ($upload_ktp && $upload_kk) {
                 $config['allowed_types'] = 'gif|jpg|png|jpeg';
                 $config['max_size']      = '2048';
                 $config['upload_path'] = './assets/img/product/user/';
@@ -105,7 +102,7 @@ class Akun extends CI_Controller
                 $result1 = $this->upload->data();
                 $kk = $this->upload->do_upload('kk');
                 $result2 = $this->upload->data();
-                $result = array('ktp/sim'=>$result1,'kk'=>$result2);
+                $result = array('ktp/sim' => $result1, 'kk' => $result2);
 
                 $hasilKTP_SIM = $result['ktp/sim']['file_name'];
                 $hasilKK = $result['kk']['file_name'];
@@ -121,8 +118,7 @@ class Akun extends CI_Controller
 
                 $this->User_model->update_user($data['user']['ID_USER'], $params);
                 redirect('akun');
-
-            }else{
+            } else {
 
                 $params = array(
                     'nama' => $this->input->post('nama'),
@@ -134,20 +130,20 @@ class Akun extends CI_Controller
                 $this->User_model->update_user($data['user']['ID_USER'], $params);
                 redirect('akun');
             }
-
         } else {
             $data['_view'] = 'profile/akun';
             $this->load->view('layouts/main', $data);
-                // echo "h";
+            // echo "h";
         }
-    } 
+    }
 
-    function editfoto () {
+    function editfoto()
+    {
         $this->load->library('form_validation');
         // check if the user exists before trying to edit it
         $data['user'] = $this->User_model->get_user($this->session->userdata('username'));
 
-       // if ($this->form_validation->run()) {
+        // if ($this->form_validation->run()) {
         $upload_foto = $_FILES['foto']['name'];
 
         if ($upload_foto) {
@@ -168,7 +164,7 @@ class Akun extends CI_Controller
             } else {
                 echo $this->upload->display_errors();
             }
-        }else{
+        } else {
             redirect('akun');
         }
     }
