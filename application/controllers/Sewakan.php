@@ -71,7 +71,6 @@ class Sewakan extends CI_Controller
                         'NAMABARANG' => $this->input->post('NAMABARANG'),
                         'JENIS' => $this->input->post('JENIS'),
                         'DESKRIPSI' => $this->input->post('DESKRIPSI'),
-                        'STATUS' => 'Belum Disewa',
                         'HARGA' => $this->input->post('HARGA'),
                         'GAMBAR' => $new_image,
                     );
