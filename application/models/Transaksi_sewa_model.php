@@ -21,7 +21,12 @@ class Transaksi_sewa_model extends CI_Model
 
     function get_transaksi_sewa_by_user($ID_USER)
     {
-        return $this->db->query("SELECT * FROM `transaksi_sewa`, `sewaan`, `barang` WHERE transaksi_sewa.ID_SEWAAN = sewaan.ID_SEWAAN AND sewaan.ID_BARANG = barang.ID_BARANG AND barang.ID_USER = '$ID_USER'")->row_array();
+        $results = array();
+        $query = $this->db->query("SELECT * FROM `transaksi_sewa`, `sewaan`, `barang` WHERE transaksi_sewa.ID_SEWAAN = sewaan.ID_SEWAAN AND sewaan.ID_BARANG = barang.ID_BARANG AND barang.ID_USER = '$ID_USER'");
+        if ($query->num_rows() > 0) {
+            $results = $query->row_array();
+        }
+        return $results;
     }
 
     /*

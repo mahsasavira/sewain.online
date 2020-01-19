@@ -7,7 +7,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Barang yang anda sewa</h5>
                             <img src="<?= base_url('assets/img/product/sewa/') . $barang['GAMBAR']; ?>" alt="" width="200px" height="200px" />
-                            <p>
+                            <p class="text-justify">
                                 Nama barang : <?= $barang['NAMA_BARANG']; ?><br>
                                 Durasi Sewa : <?= $barang['DURASI_SEWA']; ?> Hari<br>
                                 Harga barang : <?= $barang['HARGA']; ?><br>
@@ -17,8 +17,7 @@
 
                             <?= form_open_multipart('sewaan/konfirmasi_sewaan/' . $barang['ID_SEWAAN']); ?>
                             <div class="custom-file">
-                                <input type="file" name="foto"
-                                 class="form-control-file" id="inputFoto">
+                                <input type="file" name="foto" class="form-control-file" id="inputFoto">
                             </div>
                             <div class="text-center" style="padding-top: 2vw; margin-left: 5vw">
                                 <div class="col-sm-8">

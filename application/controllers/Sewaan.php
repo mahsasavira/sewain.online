@@ -76,7 +76,7 @@ class Sewaan extends CI_Controller
 
                 $params = array(
                     'ID_TRAKSAKSI' => $transaksi_sewa_id,
-                    'STATUS' => "unverified",
+                    'STATUS_PEMBAYARAN' => "unverified",
                     'TGL_BAYAR' => $this->getExactTodayDate(),
                     'BUKTI_PEMBAYARAN' => $foto,
                 );
@@ -93,8 +93,10 @@ class Sewaan extends CI_Controller
         }
     }
 
-    function konfirmasi_pembayaran($pembayaran_id) {
-        
+    function konfirmasi_pembayaran($pembayaran_id)
+    {
+        $this->Pembayaran_model->update_pembayaran($pembayaran_id, ['STATUS_PEMBAYARAN' => 'verified']);
+        redirect('profile/index');
     }
 
     function editfoto()

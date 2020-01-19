@@ -84,7 +84,7 @@
                       <input type="hidden" name="nama_barang" value="<?= $nama_barang; ?>">
                       <input type="hidden" name="gambar" value="<?= $gambar; ?>">
                       <input type="hidden" id="harga_barang" name="harga" value="<?= $tarif; ?>">
-                      <input type="hidden" name="total" value="">
+                      <input type="hidden" name="total" value="<?= $total; ?>">
                       <button type="submit" class="main_btn">Bayar Sekarang</b>
                 </form>
 

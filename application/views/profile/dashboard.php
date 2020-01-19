@@ -69,13 +69,16 @@
                                     </td>
                                     <td class="align-middle"><?= $p['STATUS']; ?></td>
                                     <td class="align-middle"><?= $p['ID_PENYEWA']; ?></td>
-                                    <?php if ($p['STATUS'] == 'verified') { ?>
-                                        <td class="align-middle">
-                                            <div class="btn-group" role="group">
-                                                <a href="<?php echo site_url('sewaan/konfirmasi_pembayaran/' . $p['ID_PEMBAYARAN']); ?>" class="btn btn-sm btn-danger">Hapus</a>
-                                            </div>
-                                        </td>
-                                    <?php } ?>
+                                    <td class="align-middle">
+
+                                        <?php
+                                        if ($p['STATUS_PEMBAYARAN'] == 'verified') { ?>
+                                            <p>Berhasil dikonfirmasi</p>
+                                        <?php } else if ($p['STATUS_PEMBAYARAN'] == 'unverified') { ?>
+                                            <a href="<?php echo site_url('sewaan/konfirmasi_pembayaran/' . $p['ID_PEMBAYARAN']); ?>" class="btn btn-sm btn-primary">Konfirmasi</a>
+                                        <?php } ?>
+                                    </td>
+
                                 </tr>
 
                             <?php
