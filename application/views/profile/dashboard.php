@@ -52,6 +52,7 @@
                                 <th scope="col">Nama Barang</th>
                                 <th scope="col">Bukti Pembayaran</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Disewa Oleh</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -61,18 +62,19 @@
                             foreach ($detail_pembayaran as $p) { ?>
                                 <tr>
                                     <th class="align-middle" scope="row"><?= $no; ?></th>
-                                    <td class="align-middle"><?= $p['TGL_BAYARAN']; ?></td>
-                                    <td class="align-middle"><?= $p['NAMA BARANG']; ?></td>
+                                    <td class="align-middle"><?= $p['TGL_BAYAR']; ?></td>
+                                    <td class="align-middle"><?= $p['NAMABARANG']; ?></td>
                                     <td class="align-middle">
                                         <img src="<?= base_url('assets/img/sewaan/bukti_pembayaran/' . $p['BUKTI_PEMBAYARAN']); ?>" width="100px" height="100px" class="img-thumbnail">
                                     </td>
                                     <td class="align-middle"><?= $p['STATUS']; ?></td>
+                                    <td class="align-middle"><?= $p['ID_PENYEWA']; ?></td>
                                     <?php if ($p['STATUS'] == 'verified') { ?>
-                                    <td class="align-middle">
-                                        <div class="btn-group" role="group">
-                                            <a href="<?php echo site_url('sewaan/konfirmasi_pembayaran/' . $p['ID_PEMBAYARAN']); ?>" class="btn btn-sm btn-danger">Hapus</a>
-                                        </div>
-                                    </td>
+                                        <td class="align-middle">
+                                            <div class="btn-group" role="group">
+                                                <a href="<?php echo site_url('sewaan/konfirmasi_pembayaran/' . $p['ID_PEMBAYARAN']); ?>" class="btn btn-sm btn-danger">Hapus</a>
+                                            </div>
+                                        </td>
                                     <?php } ?>
                                 </tr>
 
