@@ -32,7 +32,7 @@
                 <div class="col-lg-3 col-md-4">
                     <div class="single-product">
                         <div class="product-img">
-                            <img class="img-fluid w-100" src="<?php echo base_url('assets/img/product/sewa/') . $B['GAMBAR']; ?>" alt="" />
+                            <img style="height:150px; width:150px;" src="<?php echo base_url('assets/img/product/sewa/') . $B['GAMBAR']; ?>" alt="" />
                         </div>
                         <div class="product-btm">
                             <a href="<?php echo base_url('sewaan/detail_sewaan/') . $B['ID_SEWAAN']; ?>" class="d-block">

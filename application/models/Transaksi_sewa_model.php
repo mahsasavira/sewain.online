@@ -16,17 +16,20 @@ class Transaksi_sewa_model extends CI_Model
      */
     function get_transaksi_sewa($ID_TRAKSAKSI)
     {
-        return $this->db->get_where('TRANSAKSI_SEWA', array('ID_TRAKSAKSI' => $ID_TRAKSAKSI))->row_array();
+        return $this->db->get_where('transaksi_sewa', array('ID_TRAKSAKSI' => $ID_TRAKSAKSI))->row_array();
     }
 
     function get_transaksi_sewa_by_user($ID_USER)
     {
-        $results = array();
-        $query = $this->db->query("SELECT * FROM `transaksi_sewa`, `sewaan`, `barang` WHERE transaksi_sewa.ID_SEWAAN = sewaan.ID_SEWAAN AND sewaan.ID_BARANG = barang.ID_BARANG AND barang.ID_USER = '$ID_USER'");
-        if ($query->num_rows() > 0) {
-            $results = $query->row_array();
-        }
-        return $results;
+        // $results = array();
+        // $query = $this->db->query("SELECT * FROM `transaksi_sewa`, `sewaan`, `barang` WHERE transaksi_sewa.ID_SEWAAN = sewaan.ID_SEWAAN AND sewaan.ID_BARANG = barang.ID_BARANG AND barang.ID_USER = '$ID_USER'");
+
+        // if ($query->num_rows() > 0) {
+        //     $results = $query->row_array();  
+        // }
+        // return $results;
+
+        return $this->db->query("SELECT * FROM `transaksi_sewa`, `sewaan`, `barang` WHERE transaksi_sewa.ID_SEWAAN = sewaan.ID_SEWAAN AND sewaan.ID_BARANG = barang.ID_BARANG AND barang.ID_USER = '$ID_USER'")->result_array();
     }
 
     /*
@@ -35,7 +38,7 @@ class Transaksi_sewa_model extends CI_Model
     function get_all_transaksi_sewa()
     {
         $this->db->order_by('ID_TRAKSAKSI', 'desc');
-        return $this->db->get('TRANSAKSI_SEWA')->result_array();
+        return $this->db->get('transaksi_sewa')->result_array();
     }
 
     /*
@@ -43,7 +46,7 @@ class Transaksi_sewa_model extends CI_Model
      */
     function add_transaksi_sewa($params)
     {
-        $this->db->insert('TRANSAKSI_SEWA', $params);
+        $this->db->insert('transaksi_sewa', $params);
         return $this->db->insert_id();
     }
 
@@ -53,7 +56,7 @@ class Transaksi_sewa_model extends CI_Model
     function update_transaksi_sewa($ID_TRAKSAKSI, $params)
     {
         $this->db->where('ID_TRAKSAKSI', $ID_TRAKSAKSI);
-        return $this->db->update('TRANSAKSI_SEWA', $params);
+        return $this->db->update('transaksi_sewa', $params);
     }
 
     /*
@@ -61,6 +64,6 @@ class Transaksi_sewa_model extends CI_Model
      */
     function delete_transaksi_sewa($ID_TRAKSAKSI)
     {
-        return $this->db->delete('TRANSAKSI_SEWA', array('ID_TRAKSAKSI' => $ID_TRAKSAKSI));
+        return $this->db->delete('transaksi_sewa', array('ID_TRAKSAKSI' => $ID_TRAKSAKSI));
     }
 }

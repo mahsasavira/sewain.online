@@ -24,28 +24,28 @@
                     <div class="form-group">
                         <label for="NAMABARANG" class="col-md-4 control-label"><span class="text-danger">*</span>NAMABARANG</label>
                         <div class="col-md-8">
-                            <input type="text" name="NAMABARANG" value="<?= set_value('NAMABARANG'); ?>" class="form-control" id="NAMABARANG" />
+                            <input type="text" name="NAMABARANG" value="<?= set_value('NAMABARANG'); ?>" class="form-control" id="NAMABARANG" autocomplete="off" />
                             <span class="text-danger"><?php echo form_error('NAMABARANG'); ?></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="JENIS" class="col-md-4 control-label"><span class="text-danger">*</span>JENIS</label>
                         <div class="col-md-8">
-                            <input type="text" name="JENIS" value="<?= set_value('JENIS'); ?>" class="form-control" id="JENIS" />
+                            <input type="text" name="JENIS" value="<?= set_value('JENIS'); ?>" class="form-control" id="JENIS" autocomplete="off"/>
                             <span class="text-danger"><?php echo form_error('JENIS'); ?></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="DESKRIPSI" class="col-md-4 control-label"><span class="text-danger">*</span>DESKRIPSI</label>
                         <div class="col-md-8">
-                            <input type="text" name="DESKRIPSI" value="<?= set_value('DESKRIPSI'); ?>" class="form-control" id="DESKRIPSI" />
+                            <input type="text" name="DESKRIPSI" value="<?= set_value('DESKRIPSI'); ?>" class="form-control" id="DESKRIPSI" autocomplete="off"/>
                             <span class="text-danger"><?php echo form_error('DESKRIPSI'); ?></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="HARGA" class="col-md-4 control-label"><span class="text-danger">*</span>HARGA</label>
                         <div class="col-md-8">
-                            <input type="text" name="HARGA" value="<?= set_value('HARGA'); ?>" class="form-control" id="HARGA" />
+                            <input type="text" name="HARGA" value="<?= set_value('HARGA'); ?>" class="form-control" id="HARGA" autocomplete="off"/>
                             <span class="text-danger"><?php echo form_error('HARGA'); ?></span>
                         </div>
                     </div>
@@ -139,14 +139,14 @@
                             <div class="form-group">
                                 <label for="TARIF" class="col-md-4 control-label"><span class="text-danger">*</span>TARIF</label>
                                 <div class="col-md-8">
-                                    <input type="text" name="TARIF" value="<?= set_value('TARIF'); ?>" class="form-control" id="TARIF" />
+                                    <input type="text" name="TARIF" value="<?= set_value('TARIF'); ?>" class="form-control" id="TARIF" autocomplete="off"/>
                                     <span class="text-danger"><?php echo form_error('TARIF'); ?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="DURASI_SEWA" class="col-md-4 control-label"><span class="text-danger">*</span>DURASI SEWA</label>
                                 <div class="col-md-3">
-                                    <input type="text" name="DURASI_SEWA" value="<?= set_value('DURASI_SEWA'); ?>" class="form-control" id="DURASI_SEWA" />
+                                    <input type="text" name="DURASI_SEWA" value="<?= set_value('DURASI_SEWA'); ?>" class="form-control" id="DURASI_SEWA" autocomplete="off"/>
                                     <span class="text-danger"><?php echo form_error('DURASI_SEWA'); ?></span>
                                     <span>/ hari</span>
                                 </div>

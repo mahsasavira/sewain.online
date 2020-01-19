@@ -24,42 +24,32 @@
                         </thead>
                         <tbody>
                             <pre>
-                            <?php
-
-                            $no = 1;
-                            foreach ($transaksi as $T) {
-
-                            ?>
-                                
-                                <tr>
-                                    <th class="align-middle" scope="row"><?= $no; ?></th>
-                                    <td class="align-middle"><?= $T['NAMABARANG'];  ?></td>
-                                    <td class="align-middle"><?= $T['JENIS'];  ?></td>
-                                    <td class="align-middle"><?= $T['TOTAL_TARIF'];  ?></td>
-                                    <td class="align-middle">
-                                        <img src="<?= base_url('assets/img/product/sewa/' . $T['GAMBAR']) ?>" width="100px" height="100px" class="img-thumbnail">
-                                    </td>
-                                    <td class="align-middle">
-                                        <?= $T['TGL_TRANSAKSI'];  ?>
-                                    </td>
-                                    <td class="align-middle">
-                                        <?= $T['LAMA_SEWA']; ?>
-                                    </td>
-                                    <td class="align-middle">
-                                        <?= $T['ID_PENYEWA']; ?>
-                                    </td>
-                                </tr>
-                            <?php
-                                $no++;
-                            } ?>
-                        </tbody>
-                    </table>
+                                <?php
+                                $no = 1;
+                                foreach ($transaksi as $T) { ?>
+                                    <tr>
+                                        <th class="align-middle" scope="row"><?= $no; ?></th>
+                                        <td class="align-middle"><?= $T["NAMABARANG"]; ?> </td>
+                                        <td class="align-middle"><?= $T['JENIS']; ?></td>
+                                        <td class="align-middle"><?= $T['TOTAL_TARIF'];  ?></td>
+                                        <td class="align-middle">
+                                            <img src="<?= base_url('assets/img/product/sewa/' . $T['GAMBAR']) ?>" width="100px" height="100px" class="img-thumbnail">
+                                        </td>
+                                        <td class="align-middle"><?= $T['TGL_TRANSAKSI']; ?></td>
+                                        <td class="align-middle"><?= $T['LAMA_SEWA']; ?></td>
+                                        <td class="align-middle"><?= $T['ID_PENYEWA']; ?></td>
+                                    </tr>
+                                    <?php
+                                    $no++;
+                                } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
             </div>
-
         </div>
-    </div>
 
-</div>
-<!-- /.container-fluid -->
+    </div>
+    <!-- /.container-fluid -->
 </div>
